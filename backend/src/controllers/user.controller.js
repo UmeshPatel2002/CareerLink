@@ -8,7 +8,7 @@ const registerUser = async (req, res) => {
         const {fullName, email, phoneNumber, password, role } = req.body
 
        if (!fullName || !email || !phoneNumber || !password || !role){
-           res.status(400)
+           return res.status(400)
            .json({
                message:"All fields are required",
                success:false
@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
         const existedUser = await User.findOne({ email })
 
         if (existedUser) {
-            res.status(400)
+            return res.status(400)
             .json({
                 message:"User with email or username already exists",
                 success:false
@@ -51,8 +51,8 @@ const loginUser = async (req, res) =>{
     try{
         const {email, password, role} = req.body
 
-        if (!username || !email || !role) {
-           res.status(400)
+        if ( !email || !password || !role) {
+           return res.status(400)
             .json({
                 message:"Something is missing",
                 success:false
@@ -61,7 +61,7 @@ const loginUser = async (req, res) =>{
 
         let user = await User.findOne({email})
         if(!user){
-            res.status(400)
+            return res.status(400)
             .json({
                 message:"User does not exist",
                 success:false
@@ -71,7 +71,7 @@ const loginUser = async (req, res) =>{
         const isPasswordValid = await bcrypt.compare(password, user.password)
 
         if (!isPasswordValid) {
-            res.status(400) 
+            return res.status(400) 
             .json({
                message:"Invalid user credentials",
                success:false
@@ -79,7 +79,7 @@ const loginUser = async (req, res) =>{
         }
 
         if(role!== user.role){
-            res.status(400) 
+            return res.status(400) 
             .json({
                message:"Account does not exist with current role",
                success:false
@@ -97,8 +97,10 @@ const loginUser = async (req, res) =>{
            phoneNumber:user.email,  
            role:user.role
         }
-
-        const accessToken= jwt.sign(userData, process.env.SECRET_KEY, process.env.EXPIRE_TOKEN)
+        const expiretime = {
+            expiresIn: process.env.EXPIRE_TOKEN,
+        };
+        const accessToken= jwt.sign(userData, process.env.SECRET_KEY, expiretime)
 
         const options = {
             httpOnly: true,
