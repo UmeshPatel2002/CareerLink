@@ -14,6 +14,13 @@ const registerUser = async (req, res) => {
                success:false
             })
         }
+        // else{
+        //     if(typeof(phoneNumber)!='number'){
+        //         return res.status(400).json({
+        //             message:"Please enter mob no in correct format"
+        //         })
+        //     }
+        // }
 
         const existedUser = await User.findOne({ email })
 
