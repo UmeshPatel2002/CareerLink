@@ -19,16 +19,10 @@ const Signup=()=> {
       };
 
 
-    //   const handlefile=(e)=>{
-    //     setFormData({ ...formData, file:e.target.files?.[0] });
-    //   }
-
-
       const handleSubmit = async(e) => {
         e.preventDefault();
 
         try {
-            // console.log(formData);
             const response = await axios.post('http://localhost:8000/api/v1/user/register', formData, {
               headers: {
                'Content-Type': "application/json",
@@ -131,14 +125,6 @@ const Signup=()=> {
                                 <label htmlFor='recruiter'>Recruiter</label>
                             </div>
                         </div>
-                        {/* <div className='flex items-center gap-2'>
-                            <input
-                                accept="image/*"
-                                type="file"
-                                onChange={handlefile}
-                                className="cursor-pointer"
-                            />
-                        </div> */}
                     </div>
                     <div className='flex flex-col items-center'>
                     <button type="submit" className="w-[90px] h[30px] bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">Submit</button>
