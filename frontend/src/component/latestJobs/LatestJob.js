@@ -1,6 +1,5 @@
 import React from 'react'
 import LatestJobCard from './LatestJobCard';
-import { useSelector } from 'react-redux'; 
 
 const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -12,7 +11,7 @@ const LatestJob = () => {
             <h1 className='text-4xl font-bold'><span >Latest</span> Job Openings</h1>
             <div className='grid grid-cols-3 gap-4 my-5'>
                 {
-                    randomJobs <= 0 ? <span>No Job Available</span> : randomJobs?.slice(0,6).map((job) => <LatestJobCard key={job._id} job={job}/>)
+                    randomJobs <= 0 ? <span>No Job Available</span> : randomJobs?.slice(0,6).map((job) => <LatestJobCard key={job} job={job}/>)
                 }
             </div>
         </div>

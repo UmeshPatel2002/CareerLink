@@ -3,21 +3,21 @@ import React from 'react'
 const JobCard=()=> {
   
   return (
-    <div className=''>
-      <div className=''>
-         <p>Few days ago</p>
+    <div className='p-5 rounded-md shadow-md bg-white border border-gray-100 hover:scale-105 duration-200 '>
+      <div className='flex items-center justify-between'>
+         <p className='text-sm text-gray-500'>Few days ago</p>
          <img src='' alt=''/>
       </div>
-      <div className=''>
-           <img src='' alt=''/>
+      <div className='flex items-center gap-2 my-2'>
+           <img className="p-6 w-[10px] h-[10px]" src='' alt=''/>
            <div>
-            <p>Company Name</p>
-            <p>India</p>
+            <p className='font-medium text-lg'>Company Name</p>
+            <p className='text-sm text-gray-500'>India</p>
            </div>
       </div>
       <div>
-        <h1>Title</h1>
-        <p>Lorem20</p>
+        <h1 className='font-bold text-lg my-2'>Title</h1>
+        <p className='text-sm text-gray-600'>Lorem20</p>
       </div>
       <div className='flex items-center gap-2 mt-4'>
         <p className='text-blue-700 font-bold'> Positions</p>

@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import avatar from "../assets/avatar.png";
 import profileImg from "../assets/profile.png";
 import { Link } from "react-router-dom";
+import {useSelector,useDispatch} from "react-redux"
+import signout_icon from '../assets/logout.svg'
+import { setUser } from "./redux/authSlice";
 
 const Navbar = () => {
+  const dispatch=useDispatch();
  const [isvisible,setisvisible]=useState(false);
-
-
-  const user = false;
+// dispatch(setUser(localStorage.getItem('user')));
+ const { user } = useSelector(store => store.auth);
+  // console.log("user",user)
+  console.log(user);
   return (
     <div className="bg-teal-400 mx-auto max-w-[1440px] h-14 rounded-[6px]">
       <div className="flex items-center justify-between px-[16px] pt-2">
@@ -23,8 +28,8 @@ const Navbar = () => {
             <Link to='/job'><li>Job</li></Link> 
             <Link><li>Search</li></Link>
           </ul>
-
-          {!user ? (
+          
+          {!user? (
             <div className="flex items-center gap-2 cursor-pointer">
               <Link to='/login'><p className=" border rounded-[6px] border-solid border-black px-4 py-2 hover:bg-black hover:text-white transition-colors duration-300" >Login</p></Link>
               <Link to='/signup'>
@@ -39,7 +44,7 @@ const Navbar = () => {
                 src={avatar}
                 alt="avatar"
                 className="bg-white rounded-[9px] h-[40px] w-[40px] cursor-pointer"
-                onMouseEnter={()=>setisvisible(true)} onMouseLeave={()=>setisvisible(false)}
+                onMouseEnter={()=>setisvisible(true)} 
               />{
               (isvisible)?
               <div className={`absolute mt-3 ml-[-200px] w-64 p-4 bg-white border border-gray-300 rounded-lg shadow-lg   `}  onMouseEnter={()=>setisvisible(true)} onMouseLeave={()=>setisvisible(false)} >
@@ -70,7 +75,7 @@ const Navbar = () => {
                   </div>
                   <div className="flex gap-[18px]   ">
                     <img
-                      src={profileImg}
+                      src={signout_icon}
                       alt=""
                       className="h-[30px] w-[30px]"
                     />

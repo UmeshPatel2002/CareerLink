@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Navbar from "../Navbar";
+import {useDispatch} from "react-redux"
+import { setUser } from "../redux/authSlice"
 
 const Login=()=> {
+  const distpatch=useDispatch()
+  const navigate=useNavigate();
+   
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -27,7 +32,11 @@ const Login=()=> {
     })
     if (res.data.success) {
       console.log('Form submitted successfully:', res.data);
-      window.location.replace("/")
+       distpatch(setUser(res.data.user))
+       navigate('/')
+      // localStorage.setItem('user',res.data.user);
+      // window.location.replace('/');
+      
     } else {
       console.error('Unexpected response:', res);
     }
@@ -103,12 +112,14 @@ const Login=()=> {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <button
+          
+           <button
               type="submit"
               className="w-[90px] h[30px] bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
             >
               Submit
             </button>
+          
             <p className="text-sm">
               Don't have an account?{" "}
               <Link to="/signup" className="text-blue-600">
