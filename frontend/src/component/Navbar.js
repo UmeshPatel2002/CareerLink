@@ -1,18 +1,42 @@
-import React, { useState} from "react";
+import React, { useState,useRef,useEffect} from "react";
 import avatar from "../assets/avatar.png";
 import profileImg from "../assets/profile.png";
 import { Link } from "react-router-dom";
-import {useSelector,useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import signout_icon from '../assets/logout.svg'
-import { setUser } from "./redux/authSlice";
+
 
 const Navbar = () => {
-  const dispatch=useDispatch();
- const [isvisible,setisvisible]=useState(false);
-// dispatch(setUser(localStorage.getItem('user')));
- const { user } = useSelector(store => store.auth);
-  // console.log("user",user)
-  console.log(user);
+
+  const { user } = useSelector(store => store.auth);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  // Open modal when profile icon is clicked
+  const handleProfileClick = () => {
+    setIsModalOpen(true);
+  };
+
+  // Close modal if clicked outside of it
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setIsModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add click event listener when the modal is open
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } 
+    // Cleanup event listener on unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
+
+  
   return (
     <div className="bg-teal-400 mx-auto max-w-[1440px] h-14 rounded-[6px]">
       <div className="flex items-center justify-between px-[16px] pt-2">
@@ -44,10 +68,10 @@ const Navbar = () => {
                 src={avatar}
                 alt="avatar"
                 className="bg-white rounded-[9px] h-[40px] w-[40px] cursor-pointer"
-                onMouseEnter={()=>setisvisible(true)} 
+                onClick={handleProfileClick } 
               />{
-              (isvisible)?
-              <div className={`absolute mt-3 ml-[-200px] w-64 p-4 bg-white border border-gray-300 rounded-lg shadow-lg   `}  onMouseEnter={()=>setisvisible(true)} onMouseLeave={()=>setisvisible(false)} >
+              (isModalOpen)&&
+              <div ref={modalRef} className={`absolute mt-3 ml-[-200px] w-64 p-4 bg-white border border-gray-300 rounded-lg shadow-lg   `}   >
                 <div className="flex gap-[18px]  cursor-pointer ">
                   <div>
                     <img
@@ -71,7 +95,7 @@ const Navbar = () => {
                       alt=""
                       className="h-[30px] w-[30px]"
                     />
-                    <p>View Profile</p>
+                    <Link to='/profile'> <p>View Profile</p></Link>
                   </div>
                   <div className="flex gap-[18px]   ">
                     <img
@@ -82,7 +106,7 @@ const Navbar = () => {
                     <p>Signout</p>
                   </div>
                 </div>
-              </div>:<></>
+              </div>
 }
             </div>
           )}

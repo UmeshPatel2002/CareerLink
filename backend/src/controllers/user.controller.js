@@ -14,13 +14,7 @@ const registerUser = async (req, res) => {
                success:false
             })
         }
-        // else{
-        //     if(typeof(phoneNumber)!='number'){
-        //         return res.status(400).json({
-        //             message:"Please enter mob no in correct format"
-        //         })
-        //     }
-        // }
+        
 
         const existedUser = await User.findOne({ email })
 
@@ -150,18 +144,15 @@ const logoutUser = async(req, res) => {
 
 const updateProfile = async (req, res) => {
     try {
-        const { fullName, phoneNumber, bio, skills } = req.body;
+        const { phoneNumber, bio, skills } = req.body;
+        console.log(phoneNumber, bio, skills)
         
-        // const file = req.file;
-        // // cloudinary ayega idhar
-        // const fileUri = getDataUri(file);
-        // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
         let skillsArray;
         if(skills){
             skillsArray = skills.split(",");
         }
-        const userId = req.id; // middleware authentication
+        const userId = req.id; 
         let user = await User.findById(userId);
 
         if (!user) {
@@ -170,17 +161,11 @@ const updateProfile = async (req, res) => {
                 success: false
             })
         }
-        // updating data
-        if(fullName) user.fullName = fullName
+
         if(phoneNumber)  user.phoneNumber = phoneNumber
         if(bio) user.profile.bio = bio
         if(skills) user.profile.skills = skillsArray
       
-        // resume comes later here...
-        // if(cloudResponse){
-        //     user.profile.resume = cloudResponse.secure_url // save the cloudinary url
-        //     user.profile.resumeOriginalName = file.originalname // Save the original file name
-        // }
 
         await user.save();
 

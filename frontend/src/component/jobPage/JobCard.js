@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const JobCard=()=> {
   
@@ -24,8 +25,9 @@ const JobCard=()=> {
         <p className='text-[#F83002] font-bold' > type </p>
         <p className='text-[#7209b7] font-bold' >LPA</p>
       </div>
-      <div>
-
+      <div className='flex gap-4 justify-center mt-3'>
+          <Link to="/details"><button className='border pl-2 pr-2 rounded-md '>Details</button></Link>
+          <Link to="/details"><button button className='border pl-2 pr-2 rounded-md '>Apply</button></Link>
       </div>
 
 
