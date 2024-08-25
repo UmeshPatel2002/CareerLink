@@ -39,7 +39,7 @@ const CategoryCarousel = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,  
+    slidesToShow: 1,  
     slidesToScroll: 1,
     nextArrow: <NextArrow />,  
     prevArrow: <PrevArrow />
@@ -47,11 +47,11 @@ const CategoryCarousel = () => {
 
   return (
     <div className="relative mx-auto max-w-[1440px] flex justify-center items-center ">
-        <div className='w-[40%] items-center'>
+        <div className='w-[80%] md:w-[40%] items-center'>
         <Slider {...settings}>
         {categories.map((category, index) => (
-          <div key={index} className="p-4">
-            <p className="bg-gray-200 shadow-md rounded-full text-center p-2 m-12">{category}</p>
+          <div key={index} className="p-2 md:p-4">
+            <p className="bg-gray-200  shadow-md rounded-full text-center p-2 m-12">{category}</p>
           </div>
         ))}
       </Slider>

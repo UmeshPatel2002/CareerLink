@@ -4,15 +4,21 @@ import { useSelector } from 'react-redux';
 
 
 const LatestJob = () => {
-    // const {alljob}=useSelector(state=>state.jobs)
-
+    const {allJob}=useSelector(state=>state.jobs)
+    console.log("jobbb",allJob)
    
     return (
         <div className='max-w-7xl mx-auto my-20'>
             <h1 className='text-4xl font-bold'><span >Latest</span> Job Openings</h1>
             <div className='grid grid-cols-3 gap-4 my-5'>
                 {
-                    // alljob.length <= 0 ? <span>No Job Available</span> : alljob?.slice(0,6).map((job) => <LatestJobCard key={job} job={job}/>)
+                    (!allJob || allJob.length === 0) ? (
+                        <span>No Job Available</span>
+                      ) : (
+                        allJob?.slice(0, 6).map((job) => (
+                          <LatestJobCard key={job._id} job={job} />
+                        ))
+                      )
                 }
             </div>
         </div>

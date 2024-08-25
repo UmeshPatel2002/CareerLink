@@ -185,8 +185,8 @@ const updateProfile = async (req, res) => {
         if(file?.path){
             console.log(file.path)
            const resumeUrl=await uploadOnCloudinary(file.path)
-           console.log('resumeUrl:', resumeUrl); 
-           user.profile.resume=resumeUrl?.original_filename
+           console.log('resumeUrl:', resumeUrl.url); 
+           user.profile.resume=resumeUrl?.url
         }
       
 

@@ -97,7 +97,7 @@ const UpdateProfile = ({ setOpen }) => {
               id="file"
               name="file"
               type="file"
-              accept="application/pdf"
+              accept="*"
               onChange={fileHandler}
               className="col-span-3"
             />

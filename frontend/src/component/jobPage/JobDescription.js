@@ -10,7 +10,7 @@ const JobDescription = () => {
     const jobId=params.id
     useGetJob(jobId)
     const {job}=useSelector(state=>state.job)
-    console.log(job)
+    console.log("jobbb",job)
 
     return (
         <div className='max-w-7xl mx-auto my-10'>

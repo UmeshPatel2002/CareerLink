@@ -11,7 +11,7 @@ const Profile=()=> {
     const skills=['c/c++','html' ,'css', 'javascript', 'Dsa']
     const [open, setOpen]=useState(false);
     const {user}=useSelector(store=>store.auth)
-    
+    console.log(user.profile.resume)
   return (
     <div>
         <Navbar/>
