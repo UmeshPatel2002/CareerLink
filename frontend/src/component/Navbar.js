@@ -1,14 +1,18 @@
 import React, { useState,useRef,useEffect} from "react";
 import avatar from "../assets/avatar.png";
 import profileImg from "../assets/profile.png";
-import { Link } from "react-router-dom";
-import {useSelector} from "react-redux"
+import { Link, useNavigate } from "react-router-dom";
+import {useSelector,useDispatch} from "react-redux"
 import signout_icon from '../assets/logout.svg'
+import { setUser } from "./redux/authSlice";
+import axios from "axios";
 
 
 const Navbar = () => {
 
   const { user } = useSelector(store => store.auth);
+  const dispatch=useDispatch();
+  const navigate=useNavigate()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef(null);
@@ -35,6 +39,24 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isModalOpen]);
+
+
+  const signoutHandler=async()=>{
+
+    try{
+      const res=await axios.get('http://localhost:8000/api/v1/user/logout',{withCredentials:true})
+      if(res.data.success){
+
+        dispatch(setUser(null))
+        navigate('/')
+      }
+    }
+    catch(e){
+          console.log("Error",e)
+    }
+          
+
+  }
 
   
   return (
@@ -81,9 +103,10 @@ const Navbar = () => {
                     />
                   </div>
                   <div>
-                    <h4>Umesh Patel</h4>
+                    <h4>{user?.fullName}</h4>
                     <p className="text-[12px] text-[#50d71e]">
-                      Fullstack Developer
+                      {user?.prifile?.bio}
+                      
                     </p>
                   </div>
                 </div>
@@ -103,7 +126,7 @@ const Navbar = () => {
                       alt=""
                       className="h-[30px] w-[30px]"
                     />
-                    <p>Signout</p>
+                    <p onClick={()=>signoutHandler()}>Signout</p>
                   </div>
                 </div>
               </div>

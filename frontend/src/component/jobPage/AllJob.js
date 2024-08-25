@@ -2,9 +2,13 @@ import React from "react";
 import Filter from "./Filter";
 import Navbar from "../Navbar";
 import JobCard from "./JobCard";
+import { useSelector } from "react-redux";
+import useGetAllJob from "../hooks/useGetAllJob";
 
 const AllJob = () => {
+  // useGetAllJob();
   const jobs = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // const {AllJob}=useSelector(state=>state.jobs)
   return (
     <div>
        <Navbar/>

@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken"
 import {User} from "../models/users.models.js"
 import bcrypt from "bcrypt"
+import { uploadOnCloudinary } from "../utils/cloudinary.js"
 
 
 const registerUser = async (req, res) => {
@@ -95,7 +96,7 @@ const loginUser = async (req, res) =>{
            _id:user._id,
            fullName:user.fullName, 
            email:user.email, 
-           phoneNumber:user.email,  
+           phoneNumber:user.phoneNumber,  
            role:user.role
         }
         const expiretime = {
@@ -105,7 +106,9 @@ const loginUser = async (req, res) =>{
 
         const options = {
             httpOnly: true,
-            secure: true
+            secure: true,
+            // maxAge: 1*24 * 60 * 60 * 1000,
+            // path: '/', 
         }
 
         return res
@@ -126,12 +129,16 @@ const logoutUser = async(req, res) => {
     try {
         const options = {
          httpOnly: true,
-         secure: true
+         secure: true,
+        //  path: '/',
+        //  domain:'localhost'
         }
-
+  if(req.cookie){
+   
+  }
       return res
       .status(200)
-      .clearCookie("accessToken", options)
+      .clearCookie("accessToken",options)
       .json({
            message:"User logged Out",
            success:true
@@ -146,12 +153,22 @@ const updateProfile = async (req, res) => {
     try {
         const { phoneNumber, bio, skills } = req.body;
         console.log(phoneNumber, bio, skills)
-        
-
-        let skillsArray;
-        if(skills){
-            skillsArray = skills.split(",");
+        const file=req.file
+        let skillsArray 
+        if (skills) {
+            if (typeof skills === 'string') {
+                 skillsArray = skills.split(',').map(skill => skill.trim());
+            } else if (Array.isArray(skills)) {
+                skillsArray = skills;
+            } else {
+                console.error('Unexpected type for skills:', skills);
+                return res.status(400).send({ message: 'Invalid skills format' });
+            }
+        } else {
+            console.error('Skills is null or undefined');
+            return res.status(400).send({ message: 'Skills cannot be empty' });
         }
+
         const userId = req.id; 
         let user = await User.findById(userId);
 
@@ -165,6 +182,12 @@ const updateProfile = async (req, res) => {
         if(phoneNumber)  user.phoneNumber = phoneNumber
         if(bio) user.profile.bio = bio
         if(skills) user.profile.skills = skillsArray
+        if(file?.path){
+            console.log(file.path)
+           const resumeUrl=await uploadOnCloudinary(file.path)
+           console.log('resumeUrl:', resumeUrl); 
+           user.profile.resume=resumeUrl?.original_filename
+        }
       
 
         await user.save();

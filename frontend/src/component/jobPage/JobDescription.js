@@ -1,7 +1,16 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+
+import { useSelector } from 'react-redux'
+import useGetJob from '../hooks/useGetJob'
 
 const JobDescription = () => {
     const isApplied=true
+    const params=useParams()
+    const jobId=params.id
+    useGetJob(jobId)
+    const {job}=useSelector(state=>state.job)
+    console.log(job)
 
     return (
         <div className='max-w-7xl mx-auto my-10'>

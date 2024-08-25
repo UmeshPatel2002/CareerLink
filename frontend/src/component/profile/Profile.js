@@ -53,7 +53,7 @@ const Profile=()=> {
                 <div className='grid w-full max-w-sm items-center gap-1.5'>
                     <label className="text-md font-bold">Resume</label>
                     {
-                       (user?.profile?.profilePhoto)?(<a href={`user?.profile.profilePhoto`} className="text-blue-400 underline">Link</a>):<p>NA</p>
+                       (user?.profile?.resume)?(<a href={`user?.profile.resume`} className="text-blue-400 underline">Link</a>):<p>NA</p>
                     }
                 </div>
             </div>

@@ -23,7 +23,7 @@ const UpdateProfile = ({ setOpen }) => {
         const file = e.target.files?.[0]
         setInputData({...inputData, file})
     }
-    console.log(inputData)
+    // console.log(inputData)
 
     const submitHandler=async(e)=>{
         e.preventDefault()
