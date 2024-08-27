@@ -7,7 +7,7 @@ const useGetAllJob=()=> {
   useEffect(()=>{
     const fetchAllJob=async()=>{
         try{
-            const res=await axios.get('http://localhost:8000/api/v1/job/get',{
+                const res=await axios.get('http://localhost:8000/api/v1/job/get',{
                 withCredentials: true
             })
             if(res.data.success){

@@ -8,7 +8,7 @@ const useGetJob=(jobId)=> {
   useEffect(()=>{
     const fetchJob=async()=>{
         try{
-            const res=await axios.get(`http://localhost:8000/api/v1/job/get/${jobId}`,{
+               const res=await axios.get(`http://localhost:8000/api/v1/job/get/${jobId}`,{
                 withCredentials: true
             })
             if(res.data.success){

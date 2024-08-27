@@ -39,13 +39,19 @@ const rootReducer = combineReducers({
 // Create a persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configure the store with the persisted reducer
+// Configure the store with the persisted reducer and customize the middleware
 const store = configureStore({
-  reducer: persistedReducer
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+        // Optionally, you could ignore paths if needed, but it seems your issue was with actions.
+      },
+    }),
 });
 
 // Create the persistor
 export const persistor = persistStore(store);
 
 export default store;
-
