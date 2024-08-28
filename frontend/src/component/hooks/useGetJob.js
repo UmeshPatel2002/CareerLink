@@ -1,10 +1,11 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { setJob } from "../redux/jobSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { setJob } from "../redux/jobSlice";
 import axios from "axios"
 
 const useGetJob=(jobId)=> {
   const dispatch= useDispatch()
+  const {user}=useSelector(state=>state.auth)
   useEffect(()=>{
     const fetchJob=async()=>{
         try{
@@ -21,7 +22,7 @@ const useGetJob=(jobId)=> {
         }
     }
     fetchJob();
-  },[dispatch,jobId])
+  },[dispatch,jobId,user._id])
 }
 
 export default useGetJob

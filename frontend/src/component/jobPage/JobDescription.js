@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
 import { useSelector } from 'react-redux'
 import useGetJob from '../hooks/useGetJob'
 
@@ -10,17 +9,17 @@ const JobDescription = () => {
     const jobId=params.id
     useGetJob(jobId)
     const {job}=useSelector(state=>state.job)
-    console.log("jobbb",job)
+    // console.log("jobbb",job)
 
     return (
         <div className='max-w-7xl mx-auto my-10'>
             <div className='flex items-center justify-between'>
                 <div>
-                    <h1 className='font-bold text-xl'>Job Title</h1>
-                    <div className='flex items-center gap-2 mt-4'>
-                        <span className={'text-blue-700 font-bold'} variant="ghost">Positions</span>
-                        <span className={'text-[#F83002] font-bold'} variant="ghost">Job type</span>
-                        <span className={'text-[#7209b7] font-bold'} variant="ghost">Salary in LPA</span>
+                    <h1 className='font-bold text-xl'>{job?.title}</h1>
+                    <div className='flex items-center gap-4 mt-4'>
+                        <span className={'text-blue-700 font-bold'} variant="ghost">Opening:{job?.position}</span>
+                        <span className={'text-[#F83002] font-bold'} variant="ghost"> Type: {job?.jobType}</span>
+                        <span className={'text-[#7209b7] font-bold'} variant="ghost">Salary: {job?.salary} LPA</span>
                     </div>
                 </div>
                 <button
@@ -32,13 +31,13 @@ const JobDescription = () => {
             </div>
             <h1 className='border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h1>
             <div className='my-4'>
-                <h1 className='font-bold my-1'>Role: <span className='pl-4 font-normal text-gray-800'>JOb title</span></h1>
-                <h1 className='font-bold my-1'>Location: <span className='pl-4 font-normal text-gray-800'>Delhi</span></h1>
-                <h1 className='font-bold my-1'>Description: <span className='pl-4 font-normal text-gray-800'>Job description</span></h1>
-                <h1 className='font-bold my-1'>Experience: <span className='pl-4 font-normal text-gray-800'>Experience yrs</span></h1>
-                <h1 className='font-bold my-1'>Salary: <span className='pl-4 font-normal text-gray-800'>salary in LPA</span></h1>
-                <h1 className='font-bold my-1'>Total Applicants: <span className='pl-4 font-normal text-gray-800'>100</span></h1>
-                <h1 className='font-bold my-1'>Posted Date: <span className='pl-4 font-normal text-gray-800'>20/08/24</span></h1>
+                <h1 className='font-bold my-1'>Role: <span className='pl-4 font-normal text-gray-800'>{job?.title}</span></h1>
+                <h1 className='font-bold my-1'>Location: <span className='pl-4 font-normal text-gray-800'>{job?.location}</span></h1>
+                <h1 className='font-bold my-1'>Description: <span className='pl-4 font-normal text-gray-800'>{job?.description}</span></h1>
+                <h1 className='font-bold my-1'>Experience: <span className='pl-4 font-normal text-gray-800'>{job?.experienceLevel} yrs</span></h1>
+                <h1 className='font-bold my-1'>Salary: <span className='pl-4 font-normal text-gray-800'>{job?.salary} LPA</span></h1>
+                <h1 className='font-bold my-1'>Total Applicants: <span className='pl-4 font-normal text-gray-800'>{job?.applicatins?.length}</span></h1>
+                <h1 className='font-bold my-1'>Posted Date: <span className='pl-4 font-normal text-gray-800'>{job?.createdAt.split('T')[0]}</span></h1>
             </div>
         </div>
     )

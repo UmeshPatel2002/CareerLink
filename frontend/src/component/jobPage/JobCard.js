@@ -1,8 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 
 const JobCard=({job})=> {
   console.log("j",job)
+  const navigate=useNavigate()
+   console.log("id",job._id)
   
   return (
     <div className='p-5 rounded-md shadow-md bg-white border border-gray-100 hover:scale-105 duration-200 '>
@@ -27,8 +30,8 @@ const JobCard=({job})=> {
         <p className='text-[#7209b7] font-bold' >{job?.salary}LPA</p>
       </div>
       <div className='flex gap-4 justify-center mt-3'>
-          <Link to="/details"><button className='border pl-2 pr-2 rounded-md '>Details</button></Link>
-          <Link to="/details"><button button className='border pl-2 pr-2 rounded-md '>Apply</button></Link>
+          <button onClick={()=>navigate(`/details/${job._id}`)} className='border pl-2 pr-2 rounded-md '>Details</button>
+          <button onClick={()=>navigate(`/details/${job._id}`)} button className='border pl-2 pr-2 rounded-md '>Apply</button>
       </div>
 
 
