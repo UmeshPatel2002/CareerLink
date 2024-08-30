@@ -1,7 +1,8 @@
 import connectDB from "./db/index.js";
 import {app} from './app.js'
 import dotenv from "dotenv"
-import cors from 'cors'
+import cors from 'cors';
+
 
 dotenv.config({
     path: './.env'

@@ -61,9 +61,9 @@ const loginUser = async (req, res) =>{
             })  
         }
 
-        let user = await User.findOne({email})
+        let user = await User.findOne({email}).lean();
         if(!user){
-            return res.status(400)
+            return res.status(404)
             .json({
                 message:"User does not exist",
                 success:false
@@ -106,11 +106,12 @@ const loginUser = async (req, res) =>{
 
         const options = {
             httpOnly: true,
-            secure: true,
-            // maxAge: 1*24 * 60 * 60 * 1000,
+            // secure: true,
+            maxAge: 24 * 60 * 60 * 1000,
             // path: '/', 
         }
 
+        console.log('accessToken',accessToken);
         return res
         .status(200)
         .cookie("accessToken", accessToken, options)
@@ -129,7 +130,7 @@ const logoutUser = async(req, res) => {
     try {
         const options = {
          httpOnly: true,
-         secure: true,
+        //  secure: true,
         //  path: '/',
         //  domain:'localhost'
         }
