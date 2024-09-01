@@ -13,7 +13,7 @@ const Login=()=> {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    role: "student"
+    role: ""
   });
 
   const handleChange = (e) => {
@@ -35,11 +35,10 @@ const Login=()=> {
       console.log('Form submitted successfully:', res.data);
        distpatch(setUser(res.data.user))
        navigate('/')
-      // localStorage.setItem('user',res.data.user);
-      // window.location.replace('/');
-      
+
     } else {
-      console.error('Unexpected response:', res);
+      alert(res.data.message);
+      // console.error('Unexpected response:', res);
     }
   }
   catch(error){

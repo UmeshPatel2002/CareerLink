@@ -75,7 +75,7 @@ const loginUser = async (req, res) =>{
         if (!isPasswordValid) {
             return res.status(400) 
             .json({
-               message:"Invalid user credentials",
+               message:"Incorrect password",
                success:false
             })
         }
@@ -111,7 +111,7 @@ const loginUser = async (req, res) =>{
             // path: '/', 
         }
 
-        console.log('accessToken',accessToken);
+        // console.log('accessToken',accessToken);
         return res
         .status(200)
         .cookie("accessToken", accessToken, options)

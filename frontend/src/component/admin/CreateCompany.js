@@ -20,6 +20,7 @@ const CreateCompany = () => {
          })
          if(res.data.success){
             alert(res.data.message)
+            console.log(res.data.company)
             dispatch(setCompany(res.data.company))
             navigate(`/admin/addcompanydescription/${res.data.company._id}`)
          }

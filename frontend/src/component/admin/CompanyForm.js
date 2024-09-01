@@ -1,9 +1,45 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import axios from 'axios'
 const CompanyForm = () => {
      const navigate=useNavigate()
+     const {company} =useSelector(state=>state.company)
+     const [formData,setFormData]=useState(
+        {
+            name:company?.name,
+            description:"",
+            website:"",
+            location:"",
+            logo:""
+
+        }
+     );
+
+     const formHandler=(e)=>{
+        setFormData({...formData,[e.target.name]:e.target.value})
+     }
+
+     const fileHandler=(e)=>{
+        const file = e.target.files?.[0].
+        setFormData({...formData,file})
+     }
+
+     console.log(formData, "pppppp")
+
+
+     const  submitHandler=async(e)=>{
+        e.prventDefault()
+        try{
+           
+
+        }
+        catch(e){
+             console.log("Error",e)
+        }
+     }
+
 
     return (
         <div>
@@ -20,6 +56,7 @@ const CompanyForm = () => {
                             <input
                                 type="text"
                                 name="name"
+                                value={formData.name}
                                className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                             />
                         </div>
@@ -28,6 +65,7 @@ const CompanyForm = () => {
                             <input
                                 type="text"
                                 name="description"
+                                onChange={formHandler}
                                className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                                
                             />
@@ -37,6 +75,7 @@ const CompanyForm = () => {
                             <input
                                 type="text"
                                 name="website"
+                                onChange={formHandler}
                                 className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                             />
                         </div>
@@ -45,6 +84,7 @@ const CompanyForm = () => {
                             <input
                                 type="text"
                                 name="location"
+                                onChange={formHandler}
                                 className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                                
                             />
@@ -54,6 +94,7 @@ const CompanyForm = () => {
                             <input
                                 type="file"
                                 accept="image/*"
+                                onChange={fileHandler}
                                
                             />
                         </div>
