@@ -1,19 +1,22 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import Navbar from "../Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from 'axios'
+import useGetCompany from "../hooks/useGetCompany";
 const CompanyForm = () => {
      const navigate=useNavigate()
      const {company} =useSelector(state=>state.company)
+     const params=useParams()
+     useGetCompany(params.id)
+     const companyId=params.id
      const [formData,setFormData]=useState(
         {
             name:company?.name,
             description:"",
             website:"",
             location:"",
-            logo:""
-
+            file:""
         }
      );
 
@@ -22,17 +25,27 @@ const CompanyForm = () => {
      }
 
      const fileHandler=(e)=>{
-        const file = e.target.files?.[0].
-        setFormData({...formData,file})
+        const file = e.target.files?.[0]
+        setFormData({...formData, file})
      }
 
      console.log(formData, "pppppp")
 
 
      const  submitHandler=async(e)=>{
-        e.prventDefault()
+        e.preventDefault()
         try{
            
+            const res=await axios.put(`http://localhost:8000/api/v1/company/update/${companyId}`,formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                withCredentials: true
+            })
+            if(res.data.success){
+                alert(res.data.message);
+                navigate("/admin/companies");
+            }
 
         }
         catch(e){
@@ -40,12 +53,22 @@ const CompanyForm = () => {
         }
      }
 
+     useEffect(() => {
+        setFormData({
+            name: company.name || "",
+            description: company.description || "",
+            website: company.website || "",
+            location: company.location || "",
+            file: company.file || null
+        })
+    },[company]);
+
 
     return (
         <div>
             <Navbar />
             <div className='max-w-2xl mx-auto my-10  border px-5 rounded-md shadow-md '>
-                <form >
+                <form onSubmit={submitHandler} >
                     <div className='flex gap-10 p-8'>
                         <p onClick={() => navigate("/admin/companies")} className="border max-h-[40px] rounded-md bg-black text-white px-4 py-1 cursor-pointer">Back</p>
                         <h1 className='font-bold text-xl'>Company  Form</h1>
@@ -57,6 +80,7 @@ const CompanyForm = () => {
                                 type="text"
                                 name="name"
                                 value={formData.name}
+                                readOnly
                                className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                             />
                         </div>
@@ -93,11 +117,18 @@ const CompanyForm = () => {
                             <label>Upload Logo</label>
                             <input
                                 type="file"
+                                name="file"
                                 accept="image/*"
                                 onChange={fileHandler}
                                
                             />
                         </div>
+
+                    </div>
+                    <div className="flex justify-center mb-4">
+                    <button  type="submit" className="border p-2 rounded-md bg-black text-white " >
+                         submit
+                        </button>
                     </div>
 
                 </form>

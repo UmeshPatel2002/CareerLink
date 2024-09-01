@@ -2,8 +2,10 @@ import React from 'react'
 import Navbar from '../Navbar'
 import { useNavigate } from 'react-router-dom'
 import CompanyTable from './CompanyTable'
+import useGetCompanies from '../hooks/useGetCompanies'
 function Companies() {
   const navigate=useNavigate()
+   useGetCompanies()
   return (
 
    <div>

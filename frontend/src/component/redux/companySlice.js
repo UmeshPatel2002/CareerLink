@@ -4,6 +4,7 @@ const companySlice = createSlice({
     name:"company",
     initialState:{
         company:null,
+        companies:[]
     },
     reducers:{
         setCompany:(state,action) => {
@@ -15,5 +16,5 @@ const companySlice = createSlice({
         
     }
 });
-export const {setCompany} = companySlice.actions;
+export const {setCompany,setCompanies} = companySlice.actions;
 export default companySlice.reducer;
