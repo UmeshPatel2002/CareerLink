@@ -11,6 +11,8 @@ import JobDescription from "./component/jobPage/JobDescription";
 import Company from "./component/admin/Companies";
 import CreateCompany from "./component/admin/CreateCompany";
 import CompanyForm from "./component/admin/CompanyForm";
+import Jobtable from "./component/admin/JobsTable";
+import JobsCreatedbyAdmin from "./component/admin/JobsCreatedByAdmin";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path="/details/:id" element={<JobDescription/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/admin/companies" element={<Company/>}/>
+          <Route path="/admin/jobs" element={<JobsCreatedbyAdmin/>}/>
           <Route path="/admin/createCompany" element={<CreateCompany/>}/>
           <Route path="/admin/addcompanydescription/:id" element={<CompanyForm/>}/>
         </Routes>

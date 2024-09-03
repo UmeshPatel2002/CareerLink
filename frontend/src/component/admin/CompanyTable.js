@@ -3,9 +3,25 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+
 const CompanyTable = () => {
-  const { companies } = useSelector((state) => state.company);
+  const { companies,searchInputText } = useSelector((state) => state.company);
+  const [filteredcompanies,setFilteredcompanies]=useState(companies)
+
   const navigate = useNavigate();
+        
+  useEffect(()=>{
+    const filtered = companies.length >= 0 && companies.filter((company)=>{
+      if(!searchInputText){
+        return true
+    }
+    return company?.name?.toLowerCase().includes(searchInputText.toLowerCase());
+    })
+
+    setFilteredcompanies(filtered)
+  },[companies, searchInputText])
+
+  
 
   return (
     <div>
@@ -19,11 +35,11 @@ const CompanyTable = () => {
           </tr>
         </thead>
         <tbody>
-          {companies?.length <= 0 ? (
+          {filteredcompanies?.length <= 0 ? (
             <span>You have not registered company</span>
           ) : (
             <>
-              {companies?.map((company) => {
+              {filteredcompanies?.map((company) => {
                 return (
                   <tr key={company?._id} className="flex justify-between">
                     <td><span><img className="h-[40px] w-[40px]"   src={company?.logo} alt=""/></span></td>
