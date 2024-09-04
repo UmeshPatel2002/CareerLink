@@ -19,6 +19,7 @@ const PostJob = () => {
   const navigate = useNavigate();
 
   const { companies } = useSelector((store) => store.company);
+  console.log(companies)
   const changeEventHandler = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
   };

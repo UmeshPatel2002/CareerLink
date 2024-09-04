@@ -19,16 +19,19 @@ const JobsCreatedbyAdmin = () => {
   return (
     <div>
       <Navbar />
-      {/* <div className='max-w-6xl mx-auto my-10'>
+      <div className='max-w-6xl mx-auto my-10'>
+        <div className=''>
         <div className='flex items-center justify-between my-5'>
           <input
             className="w-fit"
-            placeholder="Filter by name, role"
+            placeholder="Filter by role , job type  "
             onChange={(e) => setInput(e.target.value)}
           />
           <button onClick={() => navigate("/admin/createJob")} className='bg-black text-white'>New Jobs</button>
         </div>
-        <hr/> */}
+        <hr/>
+        </div>
+        
         <JobsTable/>
       </div>
     // </div>

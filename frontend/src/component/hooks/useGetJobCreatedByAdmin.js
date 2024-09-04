@@ -11,7 +11,7 @@ const useGetJobCreatedByAdmin = () => {
             try {
                 const res = await axios.get('http://localhost:8000/api/v1/job/getjobCreatedByAdmin',{withCredentials:true});
                 if(res.data.success){
-                    console.log("abc",res.data.jobs);
+                    // console.log("abc",res.data.jobs);
                     dispatch(setJobsCreatedbyAdmin(res.data.jobs));
                 }
             } catch (error) {

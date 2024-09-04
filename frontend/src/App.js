@@ -8,8 +8,8 @@ import Home from "./component/Home";
 import AllJob from "./component/jobPage/AllJob";
 import Profile from "./component/profile/Profile";
 import JobDescription from "./component/jobPage/JobDescription";
-import Company from "./component/admin/Companies";
-import CreateCompany from "./component/admin/CreateCompany";
+import AdminHome from "./component/admin/AdminHome";
+// import CreateCompany from "./component/admin/CreateCompany";
 import CompanyForm from "./component/admin/CompanyForm";
 import JobsCreatedbyAdmin from "./component/admin/JobsCreatedByAdmin";
 import PostJob from "./component/admin/PostJob";
@@ -24,9 +24,9 @@ function App() {
           <Route path="/job" element={<AllJob/>}/>
           <Route path="/details/:id" element={<JobDescription/>}/>
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="/admin/companies" element={<Company/>}/>
+          <Route path="/admin/home" element={<AdminHome/>}/>
           <Route path="/admin/jobs" element={<JobsCreatedbyAdmin/>}/>
-          <Route path="/admin/createCompany" element={<CreateCompany/>}/>
+          {/* <Route path="/admin/createCompany" element={<CreateCompany/>}/> */}
           <Route path="/admin/addcompanydescription/:id" element={<CompanyForm/>}/>
           <Route path="/admin/createJob" element={<PostJob/>}/>
         </Routes>

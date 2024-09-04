@@ -66,7 +66,7 @@ const Navbar = () => {
             {user && user.role === "recruiter" ? (
               <>
                 <li>
-                  <Link to="/admin/companies">Home</Link>
+                  <Link to="/admin/home">Home</Link>
                 </li>
                 <li>
                   <Link to="/admin/jobs">Job</Link>
