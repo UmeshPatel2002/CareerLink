@@ -3,21 +3,30 @@ import Navbar from '../Navbar'
 import { useNavigate } from 'react-router-dom'
 import CompanyTable from './CompanyTable'
 import useGetCompanies from '../hooks/useGetCompanies'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setsearchInputText } from '../redux/companySlice'
+import CreateCompany from './CreateCompany'
+import JobsTable from './JobsTable'
+
 const Companies=()=> {
   const navigate=useNavigate()
-  const dispatch=useDispatch()
-  const [input,setInput]=useState();
+  // const dispatch=useDispatch()
+  // const [input,setInput]=useState();
    useGetCompanies()
-   useEffect(()=>{
-      dispatch(setsearchInputText(input));
-   })
+   const {companies}=useSelector(state=>state.company)
+   console.log(companies)
+  //  useEffect(()=>{
+  //     dispatch(setsearchInputText(input));
+  //  })
   return (
 
    <div>
     <Navbar/>
-    <div className='max-w-[1080px] mx-auto'>
+   
+     {companies?.length<=0?(<CreateCompany/>):navigate('/admin/jobs')}
+    
+    
+    {/* <div className='max-w-[1440px] mx-auto'>
       <div className='flex justify-between mt-10 '>
            <input 
            placeholder='Filter by name'
@@ -30,9 +39,9 @@ const Companies=()=> {
           </div>
          
       </div>
-      <hr className='mt-2'/>
       <CompanyTable/>
-    </div>
+      
+    </div> */}
    </div>
   )
 }

@@ -8,7 +8,6 @@ const useGetAllJob = () => {
   useEffect(() => {
     const fetchAllJob = async () => {
       try {
-        // console.log('cookies of getting all jobs',Cookies.get());
         const res = await axios.get("http://localhost:8000/api/v1/job/get", {
           withCredentials: true,
         });

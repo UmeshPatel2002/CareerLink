@@ -25,6 +25,7 @@ const CreateCompany = () => {
             navigate(`/admin/addcompanydescription/${res.data.company._id}`)
          }
          else{
+           alert(res.data.message)
             console.log("company with same name already exist")
          }
      }
@@ -39,7 +40,7 @@ const CreateCompany = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className=" flex justify-center max-w-2xl mx-auto border mt-6 shadow-md rounded-md">
         <div>
           <div className="my-10">

@@ -18,7 +18,7 @@ const jobsSlice = createSlice({
         setSearchJob:(state,action)=>{
             state.searchJob=action.payload
           },
-        setJobsCreatedbyAdmin:(state, action)=>{
+          setJobsCreatedbyAdmin:(state, action)=>{
             state.jobsCreatedbyAdmin=action.payload;
         },
     }

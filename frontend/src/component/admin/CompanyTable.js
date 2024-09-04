@@ -25,6 +25,7 @@ const CompanyTable = () => {
 
   return (
     <div>
+     
       <table className="w-full">
         <thead>
           <tr className="flex justify-between">
