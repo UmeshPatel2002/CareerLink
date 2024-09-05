@@ -2,13 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-const shortlistingStatus = ["Accepted", "Rejected"];
-
+const updateStatus = ["Accepted", "Rejected"];
 const Applicantstable = () => {
-  const { applicants } = useSelector((store) => store.application);
+  const { applicants } = useSelector((state) => state.application);
 
   const statusHandler = async (status, id) => {
-    console.log("called");
     try {
       const res = await axios.post(`http://localhost:8000/api/v1/application/statusupdate/${id}`, {status},
         {

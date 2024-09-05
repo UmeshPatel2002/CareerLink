@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
 import JobsTable from './JobsTable'
 import { setSearchJob } from '../redux/jobsSlice'
+import { useSelector } from 'react-redux'
 import useGetJobCreatedByAdmin from '../hooks/useGetJobCreatedByAdmin'
 
 const JobsCreatedbyAdmin = () => {
   useGetJobCreatedByAdmin();
+  const {companies}=useSelector(state=>state.company)
+  console.log("job",companies)
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,6 +18,7 @@ const JobsCreatedbyAdmin = () => {
   useEffect(() => {
     dispatch(setSearchJob(input));
   }, [input]);
+
 
   return (
     <div>
@@ -34,7 +38,7 @@ const JobsCreatedbyAdmin = () => {
         
         <JobsTable/>
       </div>
-    // </div>
+       </div>
   )
 }
 

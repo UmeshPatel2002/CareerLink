@@ -12,8 +12,9 @@ const AdminHome = () => {
   useGetCompanies();
   const navigate=useNavigate()
   const { companies } = useSelector((state) => state.company);
+  console.log("home",companies)
   const {jobsCreatedbyAdmin}=useSelector((state)=>state.jobs);
-  console.log('kkkk',jobsCreatedbyAdmin[0])
+  // console.log('kkkk',jobsCreatedbyAdmin[0])
   return (
     <div>
       <Navbar/>

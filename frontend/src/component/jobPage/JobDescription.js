@@ -17,8 +17,7 @@ const JobDescription = () => {
   const applyJobHandler = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v1/application/apply/${jobId}`,
-        {},
+        `http://localhost:8000/api/v1/application/apply/${jobId}`,{},
         {
           withCredentials: true,
         }
@@ -29,6 +28,7 @@ const JobDescription = () => {
           ...job,
           applications: [...job.applications, { applicant: user?._id }],
         };
+        console.log()
         dispatch(setJob(updateJob));
         dispatch(setisApplied(true));
       }

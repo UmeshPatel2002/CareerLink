@@ -6,9 +6,10 @@ import JobsCard from "./JobsCard";
 const JobsTable = () => {
   const { jobsCreatedbyAdmin, searchJob } = useSelector((store) => store.jobs);
   const navigate = useNavigate();
-  // console.log(jobsCreatedbyAdmin);
+  // console.log("lll",jobsCreatedbyAdmin);
 
   const [filterJobs, setFilterJobs] = useState(jobsCreatedbyAdmin);
+ 
 
   useEffect(() => {
     const filteredJobs = jobsCreatedbyAdmin?.filter((job) => {
@@ -22,7 +23,7 @@ const JobsTable = () => {
     });
     setFilterJobs(filteredJobs);
   }, [jobsCreatedbyAdmin, searchJob]);
-    console.log('h',filterJobs)
+  //  console.log("filterJobs",filterJobs)
 
   return (
     <div>
@@ -54,14 +55,14 @@ const JobsTable = () => {
         </div>;
       })} */}
 
-      <div className="max-w-7xl mx-auto my-20">
+      <div className="max-w-7xl mx-auto mt-10">
         <div className="grid grid-cols-3 gap-4 my-5">
         { filterJobs.length === 0 ? (
           <span>Job not found</span>
         ) : (
           filterJobs.map((job) => {
-            console.log("Rendering job:", job); // For debugging
-            return <JobsCard key={job._id} job={job} />;
+            // console.log("Rendering job:", job._id); // For debugging
+            return (<JobsCard key={job._id} job={job} />);
           })
         )}
         </div>
