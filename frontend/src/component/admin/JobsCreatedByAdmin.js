@@ -27,11 +27,11 @@ const JobsCreatedbyAdmin = () => {
         <div className=''>
         <div className='flex items-center justify-between my-5'>
           <input
-            className="w-fit"
+            className="w-fit p-2  outline-none m-0 bg-transparent "
             placeholder="Filter by role , job type  "
             onChange={(e) => setInput(e.target.value)}
           />
-          <button onClick={() => navigate("/admin/createJob")} className='bg-black text-white'>New Jobs</button>
+          <button onClick={() => navigate("/admin/createJob")} className='bg-black text-white rounded-md p-2'>Create Job</button>
         </div>
         <hr/>
         </div>
