@@ -17,7 +17,7 @@ const JobsCreatedbyAdmin = () => {
 
   useEffect(() => {
     dispatch(setSearchJob(input));
-  }, [input]);
+  }, [input,dispatch]);
 
 
   return (

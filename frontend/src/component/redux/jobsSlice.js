@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     allJob:[],
     jobsCreatedbyAdmin:[],
-    searchJob:'',
+    searchJob:'',    
+    filterdata:'',
 }
 const jobsSlice = createSlice({
     name:"jobs",
@@ -21,8 +22,11 @@ const jobsSlice = createSlice({
           setJobsCreatedbyAdmin:(state, action)=>{
             state.jobsCreatedbyAdmin=action.payload;
         },
+        setFilterdata:((state,action)=>{
+            state.filterdata=action.payload
+        })
     }
 });
 
-export const {setJobs, reset,setSearchJob,setJobsCreatedbyAdmin}=jobsSlice.actions;
+export const {setJobs, reset,setSearchJob,setJobsCreatedbyAdmin,setFilterdata}=jobsSlice.actions;
 export default jobsSlice.reducer;

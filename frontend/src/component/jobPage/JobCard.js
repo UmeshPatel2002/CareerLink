@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const JobCard=({job})=> {
-  console.log("j",job)
   const navigate=useNavigate()
-   console.log("id",job._id)
   
   return (
     <div className='p-5 rounded-md shadow-md bg-white border border-gray-100 hover:scale-105 duration-200 '>
