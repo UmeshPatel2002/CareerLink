@@ -80,9 +80,6 @@ const Navbar = () => {
                 <li>
                   <Link to="/job">Job</Link>
                   </li>
-                <li>
-                  <Link>Search</Link>
-                </li>
               </>
             )}
           </ul>

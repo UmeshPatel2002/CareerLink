@@ -5,12 +5,13 @@ const initialState={
     jobsCreatedbyAdmin:[],
     searchJob:'',    
     filterdata:'',
+    appliedJobs:[],
 }
 const jobsSlice = createSlice({
     name:"jobs",
     initialState,
     reducers:{
-        setJobs:(state, action)=>{
+        setAllJobs:(state, action)=>{
             state.allJob=action.payload;
         },
         reset: (state) => {
@@ -19,14 +20,20 @@ const jobsSlice = createSlice({
         setSearchJob:(state,action)=>{
             state.searchJob=action.payload
           },
-          setJobsCreatedbyAdmin:(state, action)=>{
+        setJobsCreatedbyAdmin:(state, action)=>{
             state.jobsCreatedbyAdmin=action.payload;
         },
         setFilterdata:((state,action)=>{
             state.filterdata=action.payload
-        })
+        }),
+        setSearch:((state,action)=>{
+             state.search=action.payload;
+        }),
+        setAppliedJobs:((state,action)=>{
+            state.appliedJobs=action.payload;
+       })
     }
 });
 
-export const {setJobs, reset,setSearchJob,setJobsCreatedbyAdmin,setFilterdata}=jobsSlice.actions;
+export const {setAllJobs, reset,setSearchJob,setJobsCreatedbyAdmin,setFilterdata,setAppliedJobs}=jobsSlice.actions;
 export default jobsSlice.reducer;

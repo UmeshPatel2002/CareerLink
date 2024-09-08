@@ -4,6 +4,7 @@ import avatar from "../../assets/avatar.png";
 import email_icon from "../../assets/email-icon.webp"
 import phone_icon from "../../assets/phone.png"
 import UpdateProfile from './UpdateProfile';
+import Applications from "./Applications";
 import { useSelector } from "react-redux";
 
 
@@ -11,7 +12,7 @@ const Profile=()=> {
     const skills=['c/c++','html' ,'css', 'javascript', 'Dsa']
     const [open, setOpen]=useState(false);
     const {user}=useSelector(store=>store.auth)
-    console.log(user.profile.resume)
+    console.log(user?.profile?.resume)
   return (
     <div>
         <Navbar/>
@@ -59,6 +60,7 @@ const Profile=()=> {
             </div>
             <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
                 <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
+               <Applications/>
                 
             </div>
            { open && <UpdateProfile setOpen={setOpen}/>}

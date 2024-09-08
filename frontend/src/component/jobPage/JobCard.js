@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const JobCard=({job})=> {
   const navigate=useNavigate()
+  console.log("job",job?.company?.logo)
   
   return (
     <div className='p-5 rounded-md shadow-md bg-white border border-gray-100 hover:scale-105 duration-200 '>
@@ -12,7 +13,7 @@ const JobCard=({job})=> {
          <img src='' alt=''/>
       </div>
       <div className='flex items-center gap-2 my-2'>
-           <img className="p-6 w-[10px] h-[10px]" src='' alt=''/>
+           <img className="p-6 w-[20px] h-[20px]" src={job?.company?.logo}  alt='image'/>
            <div>
             <p className='font-medium text-lg'>{job?.company?.name}</p>
             <p className='text-sm text-gray-500'>India</p>

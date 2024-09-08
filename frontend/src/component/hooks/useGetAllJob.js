@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setJobs } from "../redux/jobsSlice";
+import { setAllJobs } from "../redux/jobsSlice";
 import axios from "axios";
 
 const useGetAllJob = () => {
@@ -13,7 +13,7 @@ const useGetAllJob = () => {
         });
         if (res.data.success) {
           console.log("jobss", res.data.jobs);
-          dispatch(setJobs(res.data.jobs));
+          dispatch(setAllJobs(res.data.jobs));
         }
       } catch (e) {
         console.log("Error", e);

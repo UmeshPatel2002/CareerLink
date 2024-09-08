@@ -1,6 +1,9 @@
 import React from 'react';
 import Slider from "react-slick";
 import prev_icon from '../assets/pngegg.png'
+import { setFilterdata } from './redux/jobsSlice'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 // Custom Next Arrow
 const NextArrow = ({ onClick }) => {
@@ -45,13 +48,25 @@ const CategoryCarousel = () => {
     prevArrow: <PrevArrow />
   };
 
+
+     const dispatch=useDispatch()
+     const navigate=useNavigate()
+     const changeHandler = (category) => {
+      if (category) {
+        dispatch(setFilterdata(category));
+        navigate('/job');
+      }
+    };
+
+
+
   return (
     <div className="relative mx-auto max-w-[1440px] flex justify-center items-center ">
         <div className='w-[80%] md:w-[40%] items-center'>
         <Slider {...settings}>
         {categories.map((category, index) => (
           <div key={index} className="p-2 md:p-4">
-            <p className="bg-gray-200  shadow-md rounded-full text-center p-2 m-12">{category}</p>
+            <p onClick={() => changeHandler(category)} className="bg-gray-200  shadow-md rounded-full text-center p-2 m-12">{category}</p>
           </div>
         ))}
       </Slider>

@@ -6,12 +6,12 @@ import { useSelector } from "react-redux";
 
 const AllJob = () => {
   const { allJob, filterdata } = useSelector((state) => state.jobs);
-  const [filteredJob, setFilterJobs] = useState([]);
-   console.log("filterdata",allJob)
+  const [filteredJob, setFilteredJob] = useState([]);
+  //  console.log("filterdata",allJob)
   useEffect(() => {
-    if (filteredJob) {
+    if (filterdata) {
       const filteredJobs = allJob.filter((job) => {
-        console.log("jobrole",job.role)
+        // console.log("jobrole",job.role)
         const location = job.location ? job.location.toLowerCase() : "";
         const role = job.title ? job.title.toLowerCase() : "";
         const jobType = job.jobType ? job.jobType.toLowerCase() : "";
@@ -23,10 +23,10 @@ const AllJob = () => {
         role.includes(filterText)
         );
       })
-      setFilterJobs(filteredJobs)
+      setFilteredJob(filteredJobs)
     }
     else{
-      setFilterJobs(allJob)
+      setFilteredJob(allJob)
     }
   },[filterdata, allJob]);
 
