@@ -1,5 +1,8 @@
 import { Application } from "../models/application.models.js";
 import { Job } from "../models/job.models.js";
+import {User} from '../models/users.models.js'
+import {Company} from '../models/company.models.js'
+import {sendApplicationEmail,sendAcceptanceEmail} from '../utils/nodeMailerSetup.js'
 
 const applyForJob = async (req, res) => {
     try {
@@ -37,7 +40,12 @@ const applyForJob = async (req, res) => {
 
         job.applications.push(newApplication._id);
         await job.save();
+        
+        const user= await User.findOne({_id:userId})
 
+        await sendApplicationEmail(user.email,job.title)
+
+        
         return res.status(201).json({
             message: "Job applied successfully.",
             success: true
@@ -130,6 +138,13 @@ const updateStatus = async (req,res) => {
         
         application.status = status.toLowerCase();
         await application.save();
+        
+        const user=await User.findById(application.applicant);
+        const job=await Job.findById(application.job);
+        const company =await Company.findById(job.company);
+
+        await sendAcceptanceEmail(user.email,job.title,status,company.name);
+
 
         return res.status(200).json({
             message:"Status updated successfully.",
