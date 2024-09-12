@@ -16,7 +16,7 @@ const Hero=()=>{
 
     
   return (
-    <div className=''>
+    <div className='text-center '>
         <div className='flex flex-col items-center justify-center'>
             <h1 className='text-2xl sm:text-3xl md:text-5xl font-bold mt-16'> Search, Apply & <br/>Get Your Dream Job</h1>
             <p className='mt-4 max-w-[60%]'>Lorem ipsum dolor sit amet, consectetur , luctus nec ullamcorper mattis, pulvinar dapibus leo</p>

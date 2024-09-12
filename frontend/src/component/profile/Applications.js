@@ -9,7 +9,7 @@ function Applications() {
   return (
     <div>
 
-    <div className="grid grid-cols-1  items-center sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1  items-center sm:grid-cols-2 md:grid-cols-3 gap-4 ">
      {
         appliedJobs?.length>0?(appliedJobs?.map((jobs,index)=>{
             // console.log("lllll",jobs)

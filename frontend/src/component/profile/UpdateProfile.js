@@ -51,7 +51,7 @@ const UpdateProfile = ({ setOpen }) => {
     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg">
       <form onSubmit={submitHandler} className="bg-white p-6 rounded-lg shadow-lg"> 
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 px-[30px]">
         <div className="grid grid-cols-4 items-center gap-4">
             <label htmlFor="bio" className="text-right">
               Bio

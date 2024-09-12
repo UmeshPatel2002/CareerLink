@@ -31,9 +31,9 @@ const AllJob = () => {
   },[filterdata, allJob]);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Navbar />
-      <div className=" flex gap-[10px] max-w-[1440px] mx-auto mt-3">
+      <div className=" flex gap-[10px] max-w-[1440px] px-[30px] mx-auto mt-3">
         <div className=" max-w-[35%] sm:max-w-[20%] ">
           <Filter />
         </div>
@@ -41,7 +41,7 @@ const AllJob = () => {
           <span>Job not found</span>
         ) : (
           <div className="flex-1 h-[88vh] overflow-y-auto overflow-x-hidden pb-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredJob.map((job, index) => (
                 <JobCard job={job} key={index} />
               ))}

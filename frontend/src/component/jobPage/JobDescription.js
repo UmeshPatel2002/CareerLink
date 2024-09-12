@@ -42,7 +42,7 @@ const JobDescription = () => {
   return (
     <div>
       <Navbar/>
-      <div className="max-w-[95%] mx-auto my-10">
+      <div className="max-w-[95%] mx-auto my-10 min-h-screen">
       <div className="flex flex-col gap-6 sm:flex-row justify-between">
         <div>
           <h1 className="font-bold text-xl">{job?.title}</h1>
