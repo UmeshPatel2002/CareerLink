@@ -3,50 +3,55 @@ import {User} from "../models/users.models.js"
 import bcrypt from "bcrypt"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 
-
 const registerUser = async (req, res) => {
-    try{
-        const {fullName, email, phoneNumber, password, role } = req.body
-
-       if (!fullName || !email || !phoneNumber || !password || !role){
-           return res.status(400)
-           .json({
-               message:"All fields are required",
-               success:false
-            })
-        }
-        
-
-        const existedUser = await User.findOne({ email })
-
-        if (existedUser) {
-            return res.status(400)
-            .json({
-                message:"User with email or username already exists",
-                success:false
-            })
-        }
-
-        const hashedPassword=await bcrypt.hash(password,10)
-
-        await User.create({
-            email, 
-            fullName, 
-            password:hashedPassword, 
-            phoneNumber, 
-            role
-        })
-
-        return res.status(201)
+    try {
+      const { fullName, email, phoneNumber, password, role } = req.body;
+      
+      if (!fullName || !email || !phoneNumber || !password || !role) {
+        return res.status(400).json({
+          message: "All fields are required",
+          success: false
+        });
+      }
+      
+      const existedUser = await User.findOne({ email });
+      
+      if (existedUser) {
+        return res.status(400).json({
+          message: "User with email already exists",
+          success: false
+        });
+      }
+      
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await User.create({ email, fullName, password: hashedPassword, phoneNumber, role });
+      
+      const user = await User.findOne({ email }).select('-password');
+      
+      const expiretime = { expiresIn: process.env.EXPIRE_TOKEN };
+      const accessToken = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, expiretime);
+      
+      const options = {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000
+      };
+      
+      return res.status(200)
+        .cookie("accessToken", accessToken, options)
         .json({
-            message:"Account created successfully",
-            success:true
-        })
+          message: "Account created successfully",
+          user,
+          success: true
+        });
+        
+    } catch (error) {
+      console.error('Error in registerUser:', error);
+      return res.status(500).json({
+        message: "Server error",
+        success: false
+      });
     }
-    catch(error){
-        console.log(error)
-    }
-}
+  };
     
 const loginUser = async (req, res) =>{
 

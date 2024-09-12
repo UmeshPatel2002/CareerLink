@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import useGetJob from "../hooks/useGetJob";
 import { setJob, setisApplied } from "../redux/jobSlice";
 import axios from "axios";
+import Navbar from "../Navbar";
+import Footer from '../Footer'
 
 const JobDescription = () => {
   const params = useParams();
@@ -38,8 +40,10 @@ const JobDescription = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto my-10">
-      <div className="flex items-center justify-between">
+    <div>
+      <Navbar/>
+      <div className="max-w-[95%] mx-auto my-10">
+      <div className="flex flex-col gap-6 sm:flex-row justify-between">
         <div>
           <h1 className="font-bold text-xl">{job?.title}</h1>
           <div className="flex items-center gap-4 mt-4">
@@ -58,7 +62,7 @@ const JobDescription = () => {
         <button
           onClick={isApplied ? null : applyJobHandler}
           disabled={isApplied}
-          className={`rounded-lg p-2 ${
+          className={`rounded-lg p-1 max-h-[40px] max-w-fit ${
             isApplied
               ? "bg-gray-600 cursor-not-allowed"
               : "bg-[#3f8da0] hover:bg-[#43a7ba]"
@@ -67,7 +71,7 @@ const JobDescription = () => {
           {isApplied ? "Already Applied" : "Apply"}
         </button>
       </div>
-      <h1 className="border-b-2 border-b-gray-300 font-medium py-4">
+      <h1 className="border-b-2 border-b-gray-300 font-medium py-4 mt-4">
         Job Description
       </h1>
       <div className="my-4">
@@ -113,6 +117,9 @@ const JobDescription = () => {
         </h1>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 };
 

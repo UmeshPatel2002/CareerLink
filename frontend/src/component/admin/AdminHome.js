@@ -12,7 +12,7 @@ const AdminHome = () => {
   useGetCompanies();
   const navigate=useNavigate()
   const { companies } = useSelector((state) => state.company);
-  console.log("home",companies)
+  // console.log("home",companies)
   const {jobsCreatedbyAdmin}=useSelector((state)=>state.jobs);
   // console.log('kkkk',jobsCreatedbyAdmin[0])
   return (
@@ -25,7 +25,7 @@ const AdminHome = () => {
              <img className="rounded-full" src={companies[0]?.logo} alt="" />
            </div>
            <div>
-             <h1 className="font-bold text-4xl">
+             <h1 className="font-bold text-2xl sm:text-4xl">
                Welcome <span className="text-red-500">{companies[0]?.name}</span>
              </h1>
              <p className="text-xl py-2">{companies[0]?.description}</p>
@@ -40,9 +40,9 @@ const AdminHome = () => {
          </div>
          <hr />
 
-         <div className='max-w-7xl mx-auto my-20'>
-            <h1 className='text-4xl font-bold'><span >Recently</span> Created Jobs</h1>
-            <div className='grid grid-cols-3 gap-4 my-5'>
+         <div className='max-w-[95%] mx-auto my-20'>
+            <h1 className='text-xl sm:text-2xl md:text-4xl font-bold'><span >Recently</span> Created Jobs</h1>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 my-5'>
                 {
                     (!jobsCreatedbyAdmin || jobsCreatedbyAdmin.length === 0) ? (
                         <span>No Jobs created</span>

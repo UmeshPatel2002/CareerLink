@@ -17,7 +17,7 @@ import Applicants from "./component/admin/Applicants";
 
 function App() {
   return (
-    <div className="App">
+    <div className="max-w-[1440px] mx-auto">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>

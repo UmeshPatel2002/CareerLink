@@ -29,7 +29,7 @@ const CompanyForm = () => {
         setFormData({...formData, file})
      }
 
-     console.log(formData, "pppppp")
+    //  console.log(formData, "pppppp")
 
 
      const  submitHandler=async(e)=>{

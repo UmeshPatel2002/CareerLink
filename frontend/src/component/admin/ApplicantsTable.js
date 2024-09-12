@@ -5,7 +5,7 @@ import axios from "axios";
 const updateStatus = ["Accepted", "Rejected"];
 const Applicantstable = () => {
   const { applicants } = useSelector((state) => state.application);
-  console.log("table", applicants);
+  // console.log("table", applicants);
   const statusHandler = async (status, id) => {
     try {
       const res = await axios.post(

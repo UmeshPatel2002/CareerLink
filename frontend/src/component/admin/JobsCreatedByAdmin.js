@@ -9,8 +9,8 @@ import useGetJobCreatedByAdmin from '../hooks/useGetJobCreatedByAdmin'
 
 const JobsCreatedbyAdmin = () => {
   useGetJobCreatedByAdmin();
-  const {companies}=useSelector(state=>state.company)
-  console.log("job",companies)
+  // const {companies}=useSelector(state=>state.company)
+  // console.log("job",companies)
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 
 const Profile=()=> {
-    const skills=['c/c++','html' ,'css', 'javascript', 'Dsa']
     const [open, setOpen]=useState(false);
     const {user}=useSelector(store=>store.auth)
     console.log(user?.profile?.resume)
@@ -19,7 +18,7 @@ const Profile=()=> {
         <div className='max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-8'>
                 <div className='flex justify-between'>
                     <div className='flex items-center gap-4'>
-                        <div className="h-24 w-24">
+                        <div className=" h-16 w-16 sm:h-24 sm:w-24">
                             <img src={avatar} alt="profile" />
                         </div>
                         <div>

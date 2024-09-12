@@ -53,16 +53,16 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-teal-400 mx-auto max-w-[1440px] h-14 rounded-[6px]">
+    <div className="bg-teal-400 h-14 rounded-[6px] ">
       <div className="flex items-center justify-between px-[16px] pt-2">
-        <div className="text-2xl">
+        <div className="text-xl sm:text-2xl">
           <h1 className="font-bold cursor-pointer">
             Career<span className="text-[#973131]">Link</span>
           </h1>
         </div>
 
-        <div className="flex items-center gap-[30px]">
-          <ul className="flex font-medium items-center gap-[30px] cursor-pointer">
+        <div className="flex items-center gap-[20px]  sm:gap-[30px]">
+          <ul className="flex font-medium items-center gap-[10px] sm:gap-[30px] cursor-pointer">
             {user && user.role === "recruiter" ? (
               <>
                 <li>

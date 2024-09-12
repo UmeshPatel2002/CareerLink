@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios'
 import Navbar from '../Navbar';
+import { setUser } from '../redux/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const Signup=()=> {
+  const navigate=useNavigate()
+  const distpatch=useDispatch()
 
     const [formData, setFormData] = useState({
         fullName: '',
@@ -20,29 +25,31 @@ const Signup=()=> {
       };
 
 
-      const handleSubmit = async(e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            const response = await axios.post('http://localhost:8000/api/v1/user/register', formData, {
-              headers: {
-               'Content-Type': "application/json",
-                'Accept':'application/json',
-               
-              },
-              withCredentials: true
-            });
-            console.log(response.data);
-            if (response.data.success) {
-              console.log('Form submitted successfully:', response.data);
-              window.location.replace("/")
-            } else {
-              console.error('Unexpected response:', response);
-            }
-          } catch (error) {
-            console.error('Error submitting form:', error);
-          }
         
+        console.log('Form Data:', formData);  // Add this to check the form data
+        
+        try {
+          const res = await axios.post('http://localhost:8000/api/v1/user/register', formData, {
+            headers: {
+              'Content-Type': "application/json",
+              'Accept': 'application/json',
+            },
+            withCredentials: true
+          });
+          
+          console.log(res.data);
+          if (res.data.success) {
+            console.log('Form submitted successfully:', res.data);
+            distpatch(setUser(res.data.user));
+            navigate('/');
+          } else {
+            console.error('Unexpected response:', res);
+          }
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
       };
 
   return (

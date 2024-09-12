@@ -34,7 +34,7 @@ const AllJob = () => {
     <div>
       <Navbar />
       <div className=" flex gap-[10px] max-w-[1440px] mx-auto mt-3">
-        <div className="max-w-[20%] ">
+        <div className=" max-w-[35%] sm:max-w-[20%] ">
           <Filter />
         </div>
         {!filteredJob || filteredJob.length === 0 ? (

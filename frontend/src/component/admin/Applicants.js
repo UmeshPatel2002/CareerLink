@@ -11,7 +11,7 @@ const Applicants = () => {
     const params = useParams();
     const dispatch = useDispatch();
     const {applicants}=useSelector((state)=>state.application)
-    console.log(applicants);
+    // console.log(applicants);
 
     useEffect(() => {
         const fetchAllApplicants = async () => {
