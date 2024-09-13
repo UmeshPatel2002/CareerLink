@@ -20,8 +20,9 @@ import ProtectedRoute from "./component/admin/ProtectedRoute";
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto min-h-screen">
+    <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto">
       <Navbar/>
+      <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
@@ -35,6 +36,7 @@ function App() {
           <Route path="/admin/createJob" element={<ProtectedRoute><PostJob/></ProtectedRoute>}/>
           <Route path="/admin/applications/:id" element={<ProtectedRoute><Applicants/></ProtectedRoute>}/>
         </Routes>
+        </div>
       <Footer/>
     </div>
   );
