@@ -17,7 +17,6 @@ const AdminHome = () => {
   // console.log('kkkk',jobsCreatedbyAdmin[0])
   return (
     <div>
-      <Navbar/>
       {companies?.length<=0?(<CreateCompany/>):(
          <div>
          <div className="flex justify-center gap-6 mt-20">

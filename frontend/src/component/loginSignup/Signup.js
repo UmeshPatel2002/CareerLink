@@ -54,7 +54,6 @@ const Signup=()=> {
 
   return (
     <div>
-      <Navbar/>
        <div className='flex items-center justify-center mx-auto'>
                 <form onSubmit={handleSubmit} className='  border border-gray-200 rounded-md p-6 my-10'>
                     <h1 className=' font-bold text-xl mb-5'>Sign Up</h1>

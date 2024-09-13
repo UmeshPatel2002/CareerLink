@@ -31,8 +31,7 @@ const AllJob = () => {
   },[filterdata, allJob]);
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <div >
       <div className=" flex gap-[10px] max-w-[1440px] px-[30px] mx-auto mt-3">
         <div className=" max-w-[35%] sm:max-w-[20%] ">
           <Filter />

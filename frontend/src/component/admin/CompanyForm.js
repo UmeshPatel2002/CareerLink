@@ -66,7 +66,6 @@ const CompanyForm = () => {
 
     return (
         <div>
-            <Navbar />
             <div className='max-w-2xl mx-auto my-10  border px-5 rounded-md shadow-md '>
                 <form onSubmit={submitHandler} >
                     <div className='flex gap-10 p-8'>

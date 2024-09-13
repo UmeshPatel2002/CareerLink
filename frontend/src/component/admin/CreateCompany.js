@@ -40,7 +40,6 @@ const CreateCompany = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className=" flex justify-center max-w-2xl mx-auto border mt-6 shadow-md rounded-md">
         <div>
           <div className="my-10">

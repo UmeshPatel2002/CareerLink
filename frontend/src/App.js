@@ -14,10 +14,13 @@ import CompanyForm from "./component/admin/CompanyForm";
 import JobsCreatedbyAdmin from "./component/admin/JobsCreatedByAdmin";
 import PostJob from "./component/admin/PostJob";
 import Applicants from "./component/admin/Applicants";
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="max-w-[1440px] mx-auto min-h-screen">
+      <Navbar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
@@ -32,6 +35,8 @@ function App() {
           <Route path="/admin/createJob" element={<PostJob/>}/>
           <Route path="/admin/applications/:id" element={<Applicants/>}/>
         </Routes>
+
+      <Footer/>
     </div>
   );
 }

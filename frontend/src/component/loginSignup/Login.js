@@ -50,7 +50,6 @@ const Login=()=> {
 
   return (
     <div>
-      <Navbar/>
       <div className="flex items-center justify-center mx-auto">
         <form
           onSubmit={handleSubmit}
