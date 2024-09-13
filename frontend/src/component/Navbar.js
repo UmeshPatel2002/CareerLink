@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-[16px] pt-2">
         <div className="text-xl sm:text-2xl">
           <h1 className="font-bold cursor-pointer">
-            Career<span className="text-[#973131]">Link</span>
+           <a href="/"> Career<span className="text-[#973131]">Link</span></a>
           </h1>
         </div>
 
@@ -74,9 +74,9 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li>
+                {/* <li>
                   <Link to="/">Home </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/job">Job</Link>
                   </li>
@@ -87,12 +87,12 @@ const Navbar = () => {
           {!user ? (
             <div className="flex items-center gap-2 cursor-pointer">
               <Link to="/login">
-                <p className=" border rounded-[6px] border-solid border-black px-4 py-2 hover:bg-black hover:text-white transition-colors duration-300">
+                <p className=" border  rounded-[6px] border-solid border-black px-2 py-1 sm:px-4 sm:py-2 hover:bg-black hover:text-white transition-colors duration-300">
                   Login
                 </p>
               </Link>
               <Link to="/signup">
-                <p className=" border rounded-[6px] border-solid border-black px-4 py-2 hover:bg-black hover:text-white transition-colors duration-300">
+                <p className=" border rounded-[6px] border-solid border-black px-2 py-1 sm:px-4 sm:py-2 hover:bg-black hover:text-white transition-colors duration-300">
                   Signup
                 </p>
               </Link>

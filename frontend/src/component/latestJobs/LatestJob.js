@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const LatestJob = () => {
     const {allJob}=useSelector(state=>state.jobs)
-    console.log("jobbb",allJob)
+    // console.log("jobbb",allJob)
    
     return (
         <div className='max-w-7xl mx-auto my-20 px-[30px] '>

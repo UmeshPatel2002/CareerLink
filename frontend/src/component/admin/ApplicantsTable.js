@@ -15,7 +15,7 @@ const Applicantstable = () => {
           withCredentials: true,
         }
       );
-      console.log(res);
+      // console.log(res);
       if (res.data.success) {
         alert(res.data.message);
       }
@@ -26,8 +26,8 @@ const Applicantstable = () => {
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto mt-10">
-        <div className="grid grid-cols-3 gap-4 my-5">
+      <div className=" mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-5">
           {applicants?.applications?.length === 0 ? (
             <span>Currently, there are no applicants for the role.</span>
           ) : (
@@ -35,8 +35,7 @@ const Applicantstable = () => {
               return (
                 <div
                   key={index}
-                  className="p-5 rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer"
-                >
+                  className="p-5 rounded-md shadow-xl bg-white border border-gray-100 whitespace-normal cursor-pointer" >
                   <p>{item?.applicant?.fullName}</p>
                   <p>{item?.applicant?.email}</p>
                   <p>{item?.applicant?.phoneNumber}</p>

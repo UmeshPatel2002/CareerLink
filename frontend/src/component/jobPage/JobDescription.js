@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useGetJob from "../hooks/useGetJob";
 import { setJob, setisApplied } from "../redux/jobSlice";
 import axios from "axios";
-import Navbar from "../Navbar";
-import Footer from '../Footer'
+
 
 const JobDescription = () => {
   const params = useParams();

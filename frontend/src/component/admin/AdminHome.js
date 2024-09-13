@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import useGetCompanies from "../hooks/useGetCompanies";
-import Navbar from "../Navbar";
 import CreateCompany from "./CreateCompany";
 import useGetJobCreatedByAdmin from "../hooks/useGetJobCreatedByAdmin";
 import JobsCard from "./JobsCard";

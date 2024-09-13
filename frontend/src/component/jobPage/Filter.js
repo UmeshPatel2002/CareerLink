@@ -34,7 +34,7 @@ const filterData = [
 
 
   return (
-    <div className="flex flex-col border rounded-md shadow-md border-gray-100 pl-3 ">
+    <div className="flex flex-col border rounded-md shadow-md border-gray-100 px-2 ">
       <div className="">
         <p>Filter Jobs</p>
         <hr className="shadow-md" />
@@ -57,7 +57,7 @@ const filterData = [
                   onChange={changeHandler}
                   className="form-radio text-blue-600 focus:ring-2 focus:ring-blue-300"/>
                   
-                  <label htmlFor={itemId} >{item}</label>
+                  <label className="text-[14px] sm:text-[16px]" htmlFor={itemId} >{item}</label>
                 </div>
               );
             })}

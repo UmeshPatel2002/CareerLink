@@ -5,7 +5,7 @@ const JobsCard=({job})=> {
     const navigate=useNavigate()
   return (
       <div  className='p-5 rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer'>
-            <div>
+            <div className='whitespace-normal'>
                 <div className='flex gap-3 '>
                 <h1 className='font-bold text-lg '>Role</h1>
                 <span>{job?.title}</span>

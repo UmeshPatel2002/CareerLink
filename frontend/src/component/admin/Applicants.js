@@ -4,7 +4,6 @@ import Applicantstable from './ApplicantsTable'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setApplicants } from '../redux/applicationSlice';
-import Navbar from '../Navbar';
 
 
 const Applicants = () => {
@@ -24,11 +23,11 @@ const Applicants = () => {
             }
         }
         fetchAllApplicants();
-    }, []);
+    },);
     return (
         <div>
-            <div className='max-w-7xl mx-auto'>
-                <h1 className='font-bold text-xl my-5'>Applicants {applicants?.applications?.length}</h1>
+            <div className='px-[30px]'>
+                <h1 className='font-bold text-xl my-5'> Total Applicants {applicants?.applications?.length}</h1>
                 <Applicantstable />
             </div>
         </div>

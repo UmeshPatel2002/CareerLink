@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../Navbar'
 import { useNavigate } from 'react-router-dom' 
 import { useDispatch } from 'react-redux' 
 import JobsTable from './JobsTable'
 import { setSearchJob } from '../redux/jobsSlice'
-import { useSelector } from 'react-redux'
 import useGetJobCreatedByAdmin from '../hooks/useGetJobCreatedByAdmin'
 
 const JobsCreatedbyAdmin = () => {

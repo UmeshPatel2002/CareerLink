@@ -61,7 +61,7 @@ const CategoryCarousel = () => {
 
 
   return (
-    <div className="relative mx-auto max-w-[1440px] flex justify-center items-center ">
+    <div className="relative flex justify-center items-center ">
         <div className='w-[80%] md:w-[40%] items-center'>
         <Slider {...settings}>
         {categories.map((category, index) => (

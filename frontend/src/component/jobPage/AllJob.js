@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Filter from "./Filter";
-import Navbar from "../Navbar";
 import JobCard from "./JobCard";
 import { useSelector } from "react-redux";
 
@@ -32,7 +31,7 @@ const AllJob = () => {
 
   return (
     <div >
-      <div className=" flex gap-[10px] max-w-[1440px] px-[30px] mx-auto mt-3">
+      <div className=" flex gap-[10px] px-[30px] mt-3">
         <div className=" max-w-[35%] sm:max-w-[20%] ">
           <Filter />
         </div>
