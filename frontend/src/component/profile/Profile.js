@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../Navbar";
 import avatar from "../../assets/avatar.png";
 import email_icon from "../../assets/email-icon.webp";
 import phone_icon from "../../assets/phone.png";
@@ -10,10 +9,9 @@ import { useSelector } from "react-redux";
 const Profile = () => {
   const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
-  console.log(user?.profile?.resume);
+  // console.log(user?.profile?.resume);
   return (
     <div className="mx-auto">
-      <Navbar />
       <div className="max-w-4xl mx-auto ">
         <div className=" bg-white border border-gray-200 rounded-2xl my-5 p-8 mx-[30px] ">
         <div className="flex justify-between ">

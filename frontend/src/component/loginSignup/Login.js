@@ -12,7 +12,7 @@ const Login=()=> {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    role: ""
+    role: "student"
   });
 
   const handleChange = (e) => {

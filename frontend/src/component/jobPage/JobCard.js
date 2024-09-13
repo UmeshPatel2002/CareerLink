@@ -25,7 +25,7 @@ const JobCard = ({ job }) => {
         <img
           className="p-6 w-[40px] h-[40px]"
           src={job?.company?.logo}
-          alt="image"
+          alt=""
         />
         <div>
           <p className="font-medium text-lg">{job?.company?.name}</p>
