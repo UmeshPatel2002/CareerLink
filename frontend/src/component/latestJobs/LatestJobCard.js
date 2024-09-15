@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 const LatestJobCards = ({ job }) => {
   const navigate = useNavigate();
-  console.log("jooooo",job.company.logo)
+  // console.log("jooooo",job._id)
   return (
     <div
-      onClick={() => navigate(`/details/:${job._id}`)}
+      onClick={() => navigate(`/details/${job._id}`)}
       className="p-5 rounded-md shadow-xl bg-white border border-gray-100 whitespace-normal cursor-pointer"
     >
       <div className="flex items-center gap-2 my-2">

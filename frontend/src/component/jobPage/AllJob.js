@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Filter from "./Filter";
 import JobCard from "./JobCard";
 import { useSelector } from "react-redux";
+import { setAllJobs } from "../redux/jobsSlice";
 
 const AllJob = () => {
   const { allJob, filterdata } = useSelector((state) => state.jobs);
@@ -28,6 +29,8 @@ const AllJob = () => {
       setFilteredJob(allJob)
     }
   },[filterdata, allJob]);
+
+
 
   return (
     <div >

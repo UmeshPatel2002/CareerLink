@@ -10,7 +10,7 @@ const useGetCompanies = () => {
             try {
                 const res = await axios.get(`http://localhost:8000/api/v1/company/get`,{withCredentials:true});
                 if(res.data.success){
-                    console.log("com",res.data)
+                    // console.log("com",res.data)
                     dispatch(setCompanies(res.data.companies));
                 }
             } catch (error) {

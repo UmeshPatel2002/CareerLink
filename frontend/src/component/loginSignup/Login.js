@@ -31,7 +31,7 @@ const Login=()=> {
       withCredentials: true
     })
     if (res.data.success) {
-      console.log('Form submitted successfully:', res.data);
+      // console.log('Form submitted successfully:', res.data);
        distpatch(setUser(res.data.user))
        navigate('/')
 

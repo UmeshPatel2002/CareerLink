@@ -9,10 +9,10 @@ const useGetAllJob = () => {
     const fetchAllJob = async () => {
       try {
         const res = await axios.get("http://localhost:8000/api/v1/job/get", {
-          withCredentials: true,
+          withCredentials:true,
         });
         if (res.data.success) {
-          console.log("jobss", res.data.jobs);
+          // console.log("jobss", res.data.jobs);
           dispatch(setAllJobs(res.data.jobs));
         }
       } catch (e) {

@@ -42,15 +42,14 @@ const JobCard = ({ job }) => {
         <p className="text-[#7209b7] font-bold">{job?.salary}LPA</p>
       </div>
       <div className="flex gap-4 justify-center mt-3">
-        <button
+        <button 
           onClick={() => navigate(`/details/${job._id}`)}
           className="border pl-2 pr-2 rounded-md "
         >
           Details
         </button>
-        <button
+        <button 
           onClick={() => navigate(`/details/${job._id}`)}
-          button
           className="border pl-2 pr-2 rounded-md "
         >
           Apply
