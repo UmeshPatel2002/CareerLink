@@ -14,7 +14,8 @@ dotenv.config();
         try{
            if(!localFilePath) return null
             const response = await cloudinary.uploader.upload(localFilePath, {
-                resource_type: "raw"
+                resource_type: "raw",
+                secure_url:true
             })
 
             console.log("file is uploaded successfully",response);
