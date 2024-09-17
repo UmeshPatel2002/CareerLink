@@ -7,6 +7,7 @@ const CompanyForm = () => {
      const navigate=useNavigate()
      const {company} =useSelector(state=>state.company)
      const params=useParams()
+     console.log("company id ",params)
      useGetCompany(params.id)
      const companyId=params.id
      const [formData,setFormData]=useState(
