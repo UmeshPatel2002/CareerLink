@@ -5,7 +5,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 
 const registerUser = async (req, res) => {
     try {
-      const { fullName, email, phoneNumber, password, role } = req.body;
+      const { fullName,  email, phoneNumber, password, role } = req.body;
       
       if (!fullName || !email || !phoneNumber || !password || !role) {
         return res.status(400).json({
