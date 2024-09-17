@@ -44,7 +44,7 @@ const Signup=()=> {
             distpatch(setUser(res.data.user));
             navigate('/');
           } else {
-            console.error('Unexpected response:', res);
+            console.error('Unexpected response:', res.data.message);
           }
         } catch (error) {
           console.error('Error submitting form:', error);

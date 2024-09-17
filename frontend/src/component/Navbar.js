@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import avatar from "../assets/avatar.png";
 import profileImg from "../assets/profile.png";
+import edit_icon from '../assets/edit.png'
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import signout_icon from "../assets/logout.svg";
@@ -9,6 +10,7 @@ import axios from "axios";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
+  const { company } = useSelector((store) => store.company);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -40,9 +42,12 @@ const Navbar = () => {
 
   const signoutHandler = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/user/logout`, {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/user/logout`,
+        {
+          withCredentials: true,
+        }
+      );
       if (res.data.success) {
         dispatch(setUser(null));
         navigate("/");
@@ -57,7 +62,10 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-[16px] pt-2">
         <div className="text-xl sm:text-2xl">
           <h1 className="font-bold cursor-pointer">
-           <a href="/"> Career<span className="text-[#973131]">Link</span></a>
+            <a href="/">
+              {" "}
+              Career<span className="text-[#973131]">Link</span>
+            </a>
           </h1>
         </div>
 
@@ -79,7 +87,7 @@ const Navbar = () => {
                 </li> */}
                 <li>
                   <Link to="/job">Job</Link>
-                  </li>
+                </li>
               </>
             )}
           </ul>
@@ -127,24 +135,34 @@ const Navbar = () => {
                   </div>
 
                   <div className="flex flex-col gap-[8px] cursor-pointer mt-[6px]">
-                  
-                  { user && user.role==="student" && (
+                    {user && user.role === "student" && (
+                      <div className="flex gap-[18px]   ">
+                        <img
+                          src={profileImg}
+                          alt=""
+                          className="h-[30px] w-[30px]"
+                        />
+                        <Link to="/profile">
+                          {" "}
+                          <p>View Profile</p>
+                        </Link>
+                      </div>
+                    )}
 
-                     <div className="flex gap-[18px]   ">
-                     <img
-                       src={profileImg}
-                       alt=""
-                       className="h-[30px] w-[30px]"
-                     />
-                     <Link to="/profile">
-                       {" "}
-                       <p>View Profile</p>
-                     </Link>
-                   </div>
-                  )}
+                    {user && user.role === "recruiter" && (
+                      <div className="flex gap-[18px]   ">
+                        <img
+                          src={edit_icon}
+                          alt=""
+                          className="h-[30px] w-[30px]"
+                        />
+                        <Link to={`/admin/addcompanydescription/${company._id}`}>
+                          {" "}
+                          <p>Edit company Profile</p>
+                        </Link>
+                      </div>
+                    )}
 
-
-                    
                     <div className="flex gap-[18px]   ">
                       <img
                         src={signout_icon}

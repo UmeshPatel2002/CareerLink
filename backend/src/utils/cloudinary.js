@@ -12,9 +12,11 @@ dotenv.config();
     const uploadOnCloudinary=async(localFilePath) =>{
     
         try{
-           if(!localFilePath) return null
+           if(!localFilePath) return null;
+           console.log("hello");
+           console.log(localFilePath);
             const response = await cloudinary.uploader.upload(localFilePath, {
-                resource_type: "raw",
+                resource_type: "auto",
                 secure_url:true
             })
 

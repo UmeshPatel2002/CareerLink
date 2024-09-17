@@ -1,5 +1,6 @@
 import { Company } from "../models/company.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import fs from 'fs'
 
 const registerCompany = async (req, res) => {
     try {
@@ -79,13 +80,16 @@ const updateCompany = async (req, res) => {
         const { name, description, website, location } = req.body;
  
         const file = req.file;
+      
+
         console.log(file);
         let logo;
         if(file?.path){
-            const res=await uploadOnCloudinary (file.path)
-            logo=res.url
+            
+            const res=await uploadOnCloudinary(file.path)
+            logo=res.secure_url
         }
-        // console.log(logo)
+        console.log(logo)
     
         const updateData = { name, description, website, location ,logo};
 
