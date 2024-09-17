@@ -86,7 +86,9 @@ const Signup=()=> {
                        <label htmlFor='phoneNumber'>PhoneNumber:</label>
                         <input
                            id='phoneNumber'
-                            type="text"
+                            type="number"
+                            maxLength={10}
+                            minLength={10}
                             value={formData.phoneNumber}
                             name="phoneNumber"
                             onChange={handleChange}
@@ -110,7 +112,7 @@ const Signup=()=> {
                         <div className="flex items-center gap-4 my-5">
                             <div className="flex items-center space-x-2">
                                 <input
-                                   id='stuednt'
+                                   id='student'
                                     type="radio"
                                     name="role"
                                     value="student"

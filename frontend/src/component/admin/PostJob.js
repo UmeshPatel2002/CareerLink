@@ -99,7 +99,7 @@ const PostJob = () => {
             <div  className=" flex flex-col">
               <label>Salary</label>
               <input
-                type="text"
+                type="number"
                 name="salary"
                 value={input.salary}
                 onChange={changeEventHandler}
