@@ -10,19 +10,17 @@ dotenv.config();
 
 const app=express();
 
-// app.use(cors({
-//     origin:'*',
-//     credentials:true,
-    
-    
-// }))
-
 app.use(cors({
-    origin: function (origin, callback) {
-        callback(null, true);  // Allow all origins, including unknown
-    },
-    credentials: true
-}));
+    origin:process.env.CORS_ORIGIN,
+    credentials:true,
+}))
+
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         callback(null, true);  // Allow all origins, including unknown
+//     },
+//     credentials: true
+// }));
 
 
 app.use(express.json({limit:"16kb"}))
