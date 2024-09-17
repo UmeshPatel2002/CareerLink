@@ -79,6 +79,7 @@ const updateCompany = async (req, res) => {
         const { name, description, website, location } = req.body;
  
         const file = req.file;
+        console.log(file);
         let logo;
         if(file?.path){
             const res=await uploadOnCloudinary (file.path)

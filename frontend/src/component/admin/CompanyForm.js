@@ -44,7 +44,7 @@ const CompanyForm = () => {
             })
             if(res.data.success){
                 alert(res.data.message);
-                navigate("/admin/companies");
+                navigate("/admin/home");
             }
 
         }

@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
 
-// Create a transporter object
+//Create a transporter object
 const transporter = nodemailer.createTransport({
     service: 'gmail',  // You can use other services like 'Yahoo', 'Outlook', or custom SMTP
     auth: {
@@ -9,6 +9,15 @@ const transporter = nodemailer.createTransport({
         pass: 'ppjudkuwhwbybpsx'   // Your email password or app-specific password
     }
 });
+// Create a transporter object
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',  // You can use other services like 'Yahoo', 'Outlook', or custom SMTP
+//     auth: {
+//         user: 'careers.recruitcrm@gmail.com', // Your email
+//         pass: 'fzcefyatxzqgnvuq'   // Your email password or app-specific password
+//     }
+// });
+
 
 
 // Test the connection
@@ -39,6 +48,38 @@ export const sendApplicationEmail = async (userEmail, jobTitle) => {
         console.log('Error sending email: ' + error.message);
     }
 };
+
+export const senMail=async (req,res)=>{
+   
+    const id=Math.floor(Math.random()*1000000);
+    const mailOptions = {
+        from: 'careers.recruitcrm@gmail.com', // Sender address
+        to: 'suryanshruhal108@gmail.com',                // Recipient (applicant)
+        subject: `Coding Roung Registration`,  // Subject line
+        html: `<img src="https://res.cloudinary.com/dnmdmczfw/image/upload/f_auto,q_auto/ltoup6ix9s1oi3zfalah" alt="logo"/>
+        <div style="background-color:#fff8c9; white-space: pre-line;font-size:15px;padding:0 10px">
+            Dear Student,<br>
+            
+            <p style="font-size:18px"><strong>Congratulations!</strong></p><br> After successfully clearing the MCQ round,we are pleased to inform you that you have been selected to move forward to the coding round of the recruitment process.<br>
+            This next phase will test your problem-solving skills and proficiency in programming.<br>
+            Please prepare yourself by reviewing relevant algorithms and data structures, as these will be essential for success.<br>
+            
+            We look forward to seeing your technical abilities in action and wish you the best of luck!<br><br>
+            <a style="text-decoration:none" href="https://res.cloudinary.com/dnmdmczfw/image/upload/f_auto,q_auto/upvka7uw5mslzdmq8b0g"><button style="height:50px;padding:4px 10px;font-size:20px;background-color:#fc5203; color:white;border-radius:10px;outline:none;border:none">Register Here!</button></a><br>
+            Best regards,
+            Team Recruit CRM
+            <br>
+           </div>`,
+        // attachments:[{filename:'Coding Round Letter.pdf',''}]
+    };
+    try {
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Application email sent: ' + info.response);
+        return res.end();
+    } catch (error) {
+        console.log('Error sending email: ' + error.message);
+    }
+}
 
 
 
