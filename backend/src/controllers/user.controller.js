@@ -135,7 +135,8 @@ const logoutUser = async(req, res) => {
     try {
         const options = {
          httpOnly: true,
-        //  secure: true,
+         secure: true,
+         sameSite: 'None',
         //  path: '/',
         //  domain:'localhost'
         }
