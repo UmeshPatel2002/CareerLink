@@ -9,7 +9,7 @@ const Applicantstable = () => {
   const statusHandler = async (status, id) => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v1/application/statusupdate/${id}`,
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/application/statusupdate/${id}`,
         { status },
         {
           withCredentials: true,

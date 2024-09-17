@@ -9,7 +9,7 @@ const useGetAppliedJob = () => {
     useEffect(()=>{
         const fetchAppliedJobs = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/v1/application/getAppliedJobs', 
+                const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/application/getAppliedJobs`, 
                     {withCredentials:true});
                 // console.log(res.data);
                 if(res.data.success){

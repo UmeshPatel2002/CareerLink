@@ -30,7 +30,7 @@ const Signup=()=> {
         console.log('Form Data:', formData);  // Add this to check the form data
         
         try {
-          const res = await axios.post('http://localhost:8000/api/v1/user/register', formData, {
+          const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/user/register`, formData, {
             headers: {
               'Content-Type': "application/json",
               'Accept': 'application/json',

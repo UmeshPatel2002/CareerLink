@@ -35,7 +35,7 @@ const CompanyForm = () => {
         e.preventDefault()
         try{
            
-            const res=await axios.put(`http://localhost:8000/api/v1/company/update/${companyId}`,formData,{
+            const res=await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/v1/company/update/${companyId}`,formData,{
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

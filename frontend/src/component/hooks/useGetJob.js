@@ -11,7 +11,7 @@ const useGetJob = (jobId) => {
     const fetchJob = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v1/job/get/${jobId}`,
+          `${process.env.REACT_APP_SERVER_URL}/api/v1/job/get/${jobId}`,
           {
             withCredentials: true,
           }

@@ -8,7 +8,7 @@ const useGetCompanies = () => {
     useEffect(()=>{
         const fetchCompanies = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/v1/company/get`,{withCredentials:true});
+                const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/company/get`,{withCredentials:true});
                 if(res.data.success){
                     // console.log("com",res.data)
                     dispatch(setCompanies(res.data.companies));

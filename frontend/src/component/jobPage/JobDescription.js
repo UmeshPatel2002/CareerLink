@@ -24,7 +24,7 @@ const JobDescription = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v1/application/apply/${jobId}`, {},
+        `${process.env.REACT_APP_SERVER_URL}/api/v1/application/apply/${jobId}`, {},
         {
           withCredentials: true,
         }

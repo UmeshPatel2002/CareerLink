@@ -29,7 +29,7 @@ const UpdateProfile = ({ setOpen }) => {
         e.preventDefault()
 
         try{
-            const res=await axios.post('http://localhost:8000/api/v1/user/profile/update',inputData,{
+            const res=await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/user/profile/update`,inputData,{
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

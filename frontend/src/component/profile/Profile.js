@@ -63,9 +63,12 @@ const Profile = () => {
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5 ">
           <label className="text-md font-bold">Resume</label>
+          {/* {console.log(user?.profile.resume)} */}
           {user?.profile?.resume ? (
             <a
-              href={`user?.profile.resume`}
+              href={user?.profile.resume}
+               rel="noreferrer"
+              target="_blank"
               className="text-blue-400 underline"
             >
               Link

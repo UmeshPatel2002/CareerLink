@@ -15,7 +15,7 @@ const Applicants = () => {
     useEffect(() => {
         const fetchAllApplicants = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/v1/application/getApplicants/${params.id}`, { withCredentials: true });
+                const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/application/getApplicants/${params.id}`, { withCredentials: true });
                 console.log("job",res.data.job)
                 dispatch(setApplicants(res.data.job));
             } catch (error) {

@@ -24,7 +24,7 @@ const Login=()=> {
     e.preventDefault();
     try{
 
-    const res=await axios.post('http://localhost:8000/api/v1/user/login',formData,{
+    const res=await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/user/login`,formData,{
       headers:{
         'Content-Type': 'application/json',
       },
