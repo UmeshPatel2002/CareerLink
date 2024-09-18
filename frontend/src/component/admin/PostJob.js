@@ -72,6 +72,7 @@ const PostJob = () => {
                 type="text"
                 name="title"
                 value={input.title}
+                required
                 onChange={changeEventHandler}
                className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -82,6 +83,7 @@ const PostJob = () => {
                 type="text"
                 name="description"
                 value={input.description}
+                required
                 onChange={changeEventHandler}
                className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -92,6 +94,7 @@ const PostJob = () => {
                 type="text"
                 name="requirements"
                 value={input.requirements}
+                required
                 onChange={changeEventHandler}
                 className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -101,7 +104,9 @@ const PostJob = () => {
               <input
                 type="number"
                 name="salary"
+              
                 value={input.salary}
+                required
                 onChange={changeEventHandler}
                 className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -112,6 +117,7 @@ const PostJob = () => {
                 type="text"
                 name="location"
                 value={input.location}
+                required
                 onChange={changeEventHandler}
                 className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -121,6 +127,7 @@ const PostJob = () => {
               <input
                 type="text"
                 name="jobType"
+                required
                 value={input.jobType}
                 onChange={changeEventHandler}
                className="max-w-60 border border-black rounded-md my-1 px-2 "
@@ -132,6 +139,7 @@ const PostJob = () => {
                 type="text"
                 name="experience"
                 value={input.experience}
+                required
                 onChange={changeEventHandler}
                 className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -142,6 +150,7 @@ const PostJob = () => {
                 type="number"
                 name="position"
                 value={input.position}
+                required
                 onChange={changeEventHandler}
                 className="max-w-60 border border-black rounded-md my-1 px-2 "
               />
@@ -152,6 +161,7 @@ const PostJob = () => {
                 <option
                   key={company?.name?.toLowerCase()}
                   value={company?.name?.toLowerCase()}
+                  required
                 >
                   {company.name}
                 </option>

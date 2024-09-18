@@ -65,6 +65,7 @@ const Signup=()=> {
                             value={formData.fullName}
                             name="fullName"
                             onChange={handleChange}
+                            required
                             placeholder="Enter your name "
                             className='border border-solid '
                         />
@@ -76,6 +77,7 @@ const Signup=()=> {
                             type="email"
                             value={formData.email}
                             name="email"
+                            required
                             onChange={handleChange}
                             placeholder="Enter your email"
                             className='border border-solid '
@@ -88,9 +90,9 @@ const Signup=()=> {
                            id='phoneNumber'
                             type="number"
                             maxLength={10}
-                            minLength={10}
                             value={formData.phoneNumber}
                             name="phoneNumber"
+                            required
                             onChange={handleChange}
                             placeholder="9054545452"
                             className='border border-solid '
@@ -104,6 +106,7 @@ const Signup=()=> {
                             value={formData.password}
                             name="password"
                             onChange={handleChange}
+                            required
                             placeholder="password"
                             className='border border-solid '
                         />
@@ -116,6 +119,7 @@ const Signup=()=> {
                                     type="radio"
                                     name="role"
                                     value="student"
+                        
                                     checked={formData.role === 'student'}
                                     onChange={handleChange}
                                     className="cursor-pointer"
@@ -128,6 +132,7 @@ const Signup=()=> {
                                     type="radio"
                                     name="role"
                                     value="recruiter"
+                                
                                     checked={formData.role === 'recruiter'}
                                     onChange={handleChange}
                                     className="cursor-pointer"

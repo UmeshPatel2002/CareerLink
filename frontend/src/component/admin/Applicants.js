@@ -23,7 +23,7 @@ const Applicants = () => {
             }
         }
         fetchAllApplicants();
-    },);
+    },[]);
     return (
         <div>
             <div className='px-[30px]'>
