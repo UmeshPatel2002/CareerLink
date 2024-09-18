@@ -89,6 +89,7 @@ const CompanyForm = () => {
                                 type="text"
                                 name="description"
                                 onChange={formHandler}
+                                required
                                className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                                
                             />
@@ -99,6 +100,7 @@ const CompanyForm = () => {
                                 type="text"
                                 name="website"
                                 onChange={formHandler}
+                                required
                                 className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                             />
                         </div>
@@ -108,6 +110,7 @@ const CompanyForm = () => {
                                 type="text"
                                 name="location"
                                 onChange={formHandler}
+                                required
                                 className="border-2 border-black max-w-3/4 px-2 rounded-[4px]"
                                
                             />
@@ -118,6 +121,7 @@ const CompanyForm = () => {
                                 type="file"
                                 name="file"
                                 accept="image/*"
+                                required
                                 onChange={fileHandler}
                                
                             />

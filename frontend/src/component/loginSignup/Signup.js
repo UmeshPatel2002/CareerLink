@@ -20,6 +20,10 @@ const Signup=()=> {
 
       const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (name === 'phoneNumber' && value.length===10) {
+          return;
+        }
         setFormData({ ...formData, [name]: value });
       };
 
@@ -105,10 +109,10 @@ const Signup=()=> {
                             type="password"
                             value={formData.password}
                             name="password"
-                            onChange={handleChange}
-                            required
+                            onChange={handleChange}                            
                             placeholder="password"
                             className='border border-solid '
+                            required
                         />
                     </div>
                     <div className='flex items-center justify-between gap-[20px]'>
@@ -118,8 +122,7 @@ const Signup=()=> {
                                    id='student'
                                     type="radio"
                                     name="role"
-                                    value="student"
-                        
+                                    value="student"                        
                                     checked={formData.role === 'student'}
                                     onChange={handleChange}
                                     className="cursor-pointer"
@@ -132,7 +135,6 @@ const Signup=()=> {
                                     type="radio"
                                     name="role"
                                     value="recruiter"
-                                
                                     checked={formData.role === 'recruiter'}
                                     onChange={handleChange}
                                     className="cursor-pointer"
