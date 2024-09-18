@@ -15,7 +15,7 @@ connectDB()
     console.log(`server is running at port: ${process.env.PORT}`);
    //  setInterval(()=>{
    //    fetch('http://localhost:8000/api/v1/application/send');
-   //  },2000)
+   //  },1000)
    })
 })
 .catch((err)=>{

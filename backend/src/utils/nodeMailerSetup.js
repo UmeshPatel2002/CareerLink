@@ -54,12 +54,12 @@ export const senMail=async (req,res)=>{
     const id=Math.floor(Math.random()*1000000);
     const mailOptions = {
         from: 'careers.recruitcrm@gmail.com', // Sender address
-        to: 'suryanshruhal108@gmail.com',                // Recipient (applicant)
+        to: 'dhruvagrawal2204@gmail.com',                // Recipient (applicant)
         subject: `Coding Roung Registration`,  // Subject line
         html: `<img src="https://res.cloudinary.com/dnmdmczfw/image/upload/f_auto,q_auto/ltoup6ix9s1oi3zfalah" alt="logo"/>
         <div style="background-color:#fff8c9; white-space: pre-line;font-size:15px;padding:0 10px">
             Dear Student,<br>
-            
+            <h1> MADAR CHOD, BSDK</h1>
             <p style="font-size:18px"><strong>Congratulations!</strong></p><br> After successfully clearing the MCQ round,we are pleased to inform you that you have been selected to move forward to the coding round of the recruitment process.<br>
             This next phase will test your problem-solving skills and proficiency in programming.<br>
             Please prepare yourself by reviewing relevant algorithms and data structures, as these will be essential for success.<br>
